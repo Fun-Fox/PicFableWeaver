@@ -1,3 +1,4 @@
 /llava_model
+/llava_model/*
 *.idea
 /.idea
