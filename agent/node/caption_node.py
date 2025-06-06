@@ -1,4 +1,5 @@
 import os.path
+import time
 from time import sleep
 
 from loguru import logger
@@ -28,6 +29,7 @@ class ImageCaptionNode(Node):
             parameters = {
                 "image_base64": item["base64_image"]
             }
+            start_time = time.time()
             image_desc = mcp_call_tool(tool_name, parameters)
             sleep(10)
             image_path = item['image_path']
@@ -37,8 +39,9 @@ class ImageCaptionNode(Node):
                 "image_name": file_name,
                 "image_desc": image_desc
             })
-
-            logger.info(f"图片文件名称：{file_name}，\n 图片描述：{image_desc}")
+            end_time = time.time()
+            duration_time = (end_time - start_time) / 1000
+            logger.info(f"第{idx}张图，图片文件名称：{file_name}，\n 图片描述：{image_desc}，\n 耗时：{duration_time}s")
 
         return image_descriptions
 
