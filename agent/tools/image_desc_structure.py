@@ -2,7 +2,7 @@ from agent.utils.call_llm import call_local_llm
 import yaml
 
 
-def analyze_image_description(image_description: str) -> str:
+def analyze_image_structure(image_description: str) -> str:
     """
     分析图片描述，将其分成镜头、构图、视觉风格三部分。
 

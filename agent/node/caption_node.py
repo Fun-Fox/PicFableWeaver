@@ -5,7 +5,7 @@ from time import sleep
 from loguru import logger
 from pocketflow import Node
 
-from agent.tools.image_desc_analysis import analyze_image_description
+from agent.tools.image_desc_structure import analyze_image_structure
 from agent.utils.db import DatabaseManager, ImageDBManager
 from agent.utils.image import batch_read_images, batch_convert_to_base64
 from agent.mcp_client import mcp_call_tool
@@ -53,7 +53,7 @@ class ImageCaptionNode(Node):
         image_db = ImageDBManager(db)
         image_info_list = []
         for item in image_descriptions:
-            lens, composition, visual_style = analyze_image_description(item['image_desc'])
+            lens, composition, visual_style = analyze_image_structure(item['image_desc'])
             image_id = image_db.process_and_store_image(item['image_path'], item['image_name'], item['image_desc'],
                                                         lens=lens,
                                                         composition=composition, visual_style=visual_style)
