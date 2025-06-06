@@ -8,22 +8,24 @@
 
 运镜策略映射表：
 
-| 原始意图 | 运镜方式 | 参数配置 | 
-|---|---|---| 
-| 动态展示 | 轨道平移 | speed=0.5s/m | 
+| 原始意图 | 运镜方式 | 参数配置           | 
+|------|------|----------------| 
+| 动态展示 | 轨道平移 | speed=0.5s/m   | 
 | 情绪渲染 | 景深变化 | focus_range=2m |
-
 
 # 技术栈
 
-- MCP 
+- MCP
 - A2A
 - llava_model：https://huggingface.co/fancyfeast/llama-joycaption-beta-one-hf-llava
 - Python 3.11
 
-
 ## 🛠️ 部署步骤
+
+### 部署远程mcp服务
+
 ```commandline
+cd remote_mcp_server
 pip install -r requirements.txt
 # 将整个模型仓库下载到 ./llava_model/ 文件夹中。
 set HF_ENDPOINT=https://hf-mirror.com

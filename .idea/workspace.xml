@@ -5,31 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="153aec6d-2f38-457f-b038-d60f7ce42a5f" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/agent/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/agent/flow/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/agent/flow/generate_image_caption_flow.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/agent/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/agent/node/decide_tool_node.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/agent/node/execute_tool_node.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/agent/node/get_tools_node.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/agent/tools/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/agent/utils/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/agent/utils/call_llm.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/agent/utils/image.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/agent/utils/mcp_client.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/1 (1).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/1 (2).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/1 (3).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/1 (4).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remote_mcp_server/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remote_mcp_server/caption.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remote_mcp_server/test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remote_mcp_server/utils/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/agent/node/caption_node.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/agent/tools/image_desc_analysis.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/remote_mcp_server/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/demo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/flow/generate_image_caption_flow.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/flow/image_caption_flow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/node/decide_tool_node.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/node/execute_tool_node.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/node/get_tools_node.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/utils/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/utils/db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/utils/image.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/utils/image.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo.py" beforeDir="false" afterPath="$PROJECT_DIR$/remote_mcp_server/demo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,24 +54,24 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/PycharmProjects/PicFableWeaver/image_caption_agent/mcp_server",
+    "last_opened_file_path": "D:/PycharmProjects/PicFableWeaver/remote_mcp_server",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\PycharmProjects\PicFableWeaver\remote_mcp_server" />
       <recent name="D:\PycharmProjects\PicFableWeaver\image_caption_agent\mcp_server" />
       <recent name="D:\PycharmProjects\PicFableWeaver\example" />
       <recent name="D:\PycharmProjects\PicFableWeaver\image_caption_agent" />
       <recent name="D:\PycharmProjects\PicFableWeaver" />
-      <recent name="D:\Code\PicFableWeaver" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\PycharmProjects\PicFableWeaver\agent\tools" />
+      <recent name="D:\PycharmProjects\PicFableWeaver\remote_mcp_server" />
       <recent name="D:\PycharmProjects\PicFableWeaver\agent\utils" />
       <recent name="D:\PycharmProjects\PicFableWeaver\agent\mcp_client" />
       <recent name="D:\PycharmProjects\PicFableWeaver\image_caption_agent" />
-      <recent name="D:\PycharmProjects\PicFableWeaver" />
-      <recent name="D:\PycharmProjects\PicFableWeaver\image_caption_agent\mcp_server\utils" />
     </key>
   </component>
   <component name="RunManager">

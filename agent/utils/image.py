@@ -3,6 +3,7 @@ import base64
 from PIL import Image
 from io import BytesIO
 
+
 # 新增函数：批量读取文件夹内的图片
 def batch_read_images(folder_path: str) -> list[str]:
     """
@@ -18,6 +19,7 @@ def batch_read_images(folder_path: str) -> list[str]:
                 image_paths.append(os.path.join(root, file))
     return image_paths
 
+
 # 新增函数：批量将图片转换为 Base64 格式
 def batch_convert_to_base64(image_paths: list[str]) -> list[str]:
     """
@@ -31,8 +33,9 @@ def batch_convert_to_base64(image_paths: list[str]) -> list[str]:
         with open(image_path, "rb") as image_file:
             image_data = image_file.read()
             base64_image = base64.b64encode(image_data).decode("utf-8")
-            base64_images.append(base64_image)
+            base64_images.append({"image_path": image_path, "base64_image": base64_image})
     return base64_images
+
 
 # 新增函数：将单个图片转换为 Base64 格式（兼容性函数）
 def convert_single_image_to_base64(image_path: str) -> str:
@@ -45,6 +48,7 @@ def convert_single_image_to_base64(image_path: str) -> str:
     with open(image_path, "rb") as image_file:
         image_data = image_file.read()
         return base64.b64encode(image_data).decode("utf-8")
+
 
 # 示例：使用上述函数进行批量处理
 if __name__ == "__main__":
