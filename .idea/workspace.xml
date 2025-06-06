@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="153aec6d-2f38-457f-b038-d60f7ce42a5f" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent/flow/image_database.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/image_database.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent/node/caption_node.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/node/caption_node.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent/utils/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/utils/db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent/utils/mcp_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/mcp_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remote_mcp_server/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/remote_caption_mcp_server/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remote_mcp_server/demo.py" beforeDir="false" afterPath="$PROJECT_DIR$/remote_caption_mcp_server/demo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remote_mcp_server/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/remote_caption_mcp_server/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remote_mcp_server/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/remote_caption_mcp_server/start.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remote_mcp_server/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/remote_caption_mcp_server/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remote_mcp_server/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/remote_caption_mcp_server/utils/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remote_mcp_server/utils/fancyfeast_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/remote_caption_mcp_server/utils/fancyfeast_model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
