@@ -164,24 +164,27 @@ CAPTION_TYPE_MAP = {
 
 NAME_OPTION = "如果图像中有一个人物/角色，你必须称他们为 {name}。"
 
+
 # 设置模型路径，指向 Hugging Face 上的一个预训练模型仓库。
 # 这个模型是 llama-joycaption-beta-one 的 LLAVA 版本。
 # LLaVA 是一个 多模态大语言模型（Multimodal Large Language Model, MLLM），它结合了 视觉理解能力 和 大型语言模型的推理与生成能力，可以接受图像和文本作为输入，并生成自然语言描述、回答视觉相关问题等。
-MODEL_PATH = "fancyfeast/llama-joycaption-beta-one-hf-llava"
+MODEL_PATH = "image_caption_agent/mcp_server/fancyfeast/llama-joycaption-beta-one-hf-llava"
 
 # 加载模型
 # 使用 AutoProcessor 加载与模型配套的处理器（tokenizer + 图像处理器）。
 # AutoProcessor 会根据 MODEL_PATH 中的 config 自动选择合适的 Processor 类。
-processor = AutoProcessor.from_pretrained("./llava_model/processor")
+
+processor = AutoProcessor.from_pretrained(MODEL_PATH)
 # 使用 LlavaForConditionalGeneration 加载预训练的 LLAVA 模型。
 # 参数说明：
 # - `pretrained_model_name_or_path`: 模型路径，从 Hugging Face 或本地加载。
 # - `torch_dtype="bfloat16"`: 使用 bfloat16 精度加载权重，节省显存并加快推理速度。
 # - `device_map=0`: 将模型部署在 GPU 的第 0 号设备上（即 CUDA:0）。
 model = LlavaForConditionalGeneration.from_pretrained(
-    "./llava_model/model",
+    MODEL_PATH,
     torch_dtype="bfloat16",
-    device_map=0
+    device_map="auto",
+# load_in_8bit=True  # 启用 8-bit 量化
 )
 print("✅ 模型加载成功！")
 # 断言检查模型是否为 LlavaForConditionalGeneration 实例。
@@ -258,7 +261,7 @@ def chat_joycaption(input_image: Image.Image, prompt: str, temperature: float, t
 	inputs = processor(text=[convo_string], images=[input_image], return_tensors="pt").to('cuda')
 	inputs['pixel_values'] = inputs['pixel_values'].to(torch.bfloat16)
 
-	streamer = TextIteratorStreamer(processor.tokenizer, timeout=10.0, skip_prompt=True, skip_special_tokens=True)
+	streamer = TextIteratorStreamer(processor.tokenizer, timeout=60.0, skip_prompt=True, skip_special_tokens=True)
 
 	generate_kwargs = dict(
 		**inputs,

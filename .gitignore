@@ -1,0 +1,6 @@
+/llava_model
+/llava_model/*
+*.idea
+/.idea
+/fancyfeasts
+/remote_mcp_server/fancyfeast
