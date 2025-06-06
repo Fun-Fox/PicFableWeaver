@@ -15,7 +15,7 @@ class FancyFeastModel:
     def _load_model(self):
         # 加载模型和处理器
         # 修改：使用 Hugging Face 支持的模型名称，而非本地路径
-        MODEL_PATH = "../fancyfeast/llama-joycaption-beta-one-hf-llava"
+        MODEL_PATH = "fancyfeast/llama-joycaption-beta-one-hf-llava"
         self.processor = AutoProcessor.from_pretrained(MODEL_PATH)
         self.model = LlavaForConditionalGeneration.from_pretrained(
             MODEL_PATH,

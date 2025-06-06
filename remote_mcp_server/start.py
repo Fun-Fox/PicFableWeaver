@@ -3,7 +3,7 @@ from loguru import logger
 import torch
 
 # 初始化 FastMCP 实例
-mcp = FastMCP("图像描述服务")
+mcp = FastMCP("caption")
 
 # 使用单例模式加载模型
 from remote_mcp_server.utils.fancyfeast_model import FancyFeastModel

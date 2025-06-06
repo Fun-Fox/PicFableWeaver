@@ -1,6 +1,7 @@
 import os.path
 from time import sleep
 
+from loguru import logger
 from pocketflow import Node
 
 from agent.tools.image_desc_analysis import analyze_image_description
@@ -21,7 +22,7 @@ class ImageCaptionNode(Node):
 
         image_base64_list = batch_convert_to_base64(image_paths)
 
-        tool_name = "caption_generate_image_caption"
+        tool_name = "generate_image_caption"
         image_descriptions = []
         for idx, item in enumerate(image_base64_list):
             parameters = {
@@ -37,14 +38,15 @@ class ImageCaptionNode(Node):
                 "image_desc": image_desc
             })
 
+            logger.info(f"图片文件名称：{file_name}，\n 图片描述：{image_desc}")
 
-
-            return image_descriptions
+        return image_descriptions
 
     def post(self, shared, prep_res, exec_res):
         image_descriptions = exec_res
         db = DatabaseManager()
         db.connect()
+        db.create_table()
         image_db = ImageDBManager(db)
         image_info_list = []
         for item in image_descriptions:
