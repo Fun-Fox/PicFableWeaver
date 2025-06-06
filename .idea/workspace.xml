@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="153aec6d-2f38-457f-b038-d60f7ce42a5f" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/comfyui_client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/comfyui_workflow_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/workflows/basic.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/workflows/basic_api_test.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent/node/caption_node.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/node/caption_node.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent/tools/image_desc_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/tools/image_desc_structure.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/node/weaver_node.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/node/weaver_node.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,11 +64,11 @@
       <recent name="D:\PycharmProjects\PicFableWeaver" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\PycharmProjects\PicFableWeaver\remote_comfyui_mcp_server" />
+      <recent name="D:\PycharmProjects\PicFableWeaver\remote_comfyui_mcp_server\workflows" />
       <recent name="D:\PycharmProjects\PicFableWeaver\db" />
       <recent name="D:\PycharmProjects\PicFableWeaver\agent" />
       <recent name="D:\PycharmProjects\PicFableWeaver\agent\mcp_client" />
-      <recent name="D:\PycharmProjects\PicFableWeaver\agent\tools" />
-      <recent name="D:\PycharmProjects\PicFableWeaver\remote_mcp_server" />
     </key>
   </component>
   <component name="RunManager" selected="Python.image_caption_flow">
