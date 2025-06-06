@@ -2,11 +2,12 @@ from fastmcp import FastMCP
 from loguru import logger
 import torch
 
+from remote_caption_mcp_server.utils.fancyfeast_model import FancyFeastModel
+
 # 初始化 FastMCP 实例
 mcp = FastMCP("caption")
 
 # 使用单例模式加载模型
-from remote_mcp_server.utils.fancyfeast_model import FancyFeastModel
 
 fancy_feast_model = FancyFeastModel()
 
@@ -39,7 +40,7 @@ def generate_image_caption(image_base64: str) -> str:
     ]
     caption_length = "any"
     # 构建提示词
-    prompt = build_prompt(caption_type, extra_options, caption_length)
+    prompt = build_prompt(caption_type, extra_options[3:], caption_length)
     logger.info("prompt: {}", prompt)
 
     # 处理输入

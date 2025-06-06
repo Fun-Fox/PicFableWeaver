@@ -3,7 +3,7 @@ from typing import List, Tuple
 
 
 class DatabaseManager:
-    def __init__(self, db_path: str = 'image_database.db'):
+    def __init__(self, db_path: str = '../db/image_database.db'):
         self.db_path = db_path
         self.conn = None
         self.cursor = None

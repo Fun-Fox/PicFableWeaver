@@ -5,8 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="153aec6d-2f38-457f-b038-d60f7ce42a5f" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/flow/image_database.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/image_database.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/agent/node/caption_node.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/node/caption_node.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/utils/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/utils/db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/utils/mcp_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/mcp_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/remote_mcp_server/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/remote_caption_mcp_server/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/remote_mcp_server/demo.py" beforeDir="false" afterPath="$PROJECT_DIR$/remote_caption_mcp_server/demo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/remote_mcp_server/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/remote_caption_mcp_server/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/remote_mcp_server/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/remote_caption_mcp_server/start.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/remote_mcp_server/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/remote_caption_mcp_server/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/remote_mcp_server/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/remote_caption_mcp_server/utils/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/remote_mcp_server/utils/fancyfeast_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/remote_caption_mcp_server/utils/fancyfeast_model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,11 +71,11 @@
       <recent name="D:\PycharmProjects\PicFableWeaver" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\PycharmProjects\PicFableWeaver\db" />
+      <recent name="D:\PycharmProjects\PicFableWeaver\agent" />
+      <recent name="D:\PycharmProjects\PicFableWeaver\agent\mcp_client" />
       <recent name="D:\PycharmProjects\PicFableWeaver\agent\tools" />
       <recent name="D:\PycharmProjects\PicFableWeaver\remote_mcp_server" />
-      <recent name="D:\PycharmProjects\PicFableWeaver\agent\utils" />
-      <recent name="D:\PycharmProjects\PicFableWeaver\agent\mcp_client" />
-      <recent name="D:\PycharmProjects\PicFableWeaver\image_caption_agent" />
     </key>
   </component>
   <component name="RunManager" selected="Python.image_caption_flow">
@@ -246,8 +257,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.image_caption_flow" />
         <item itemvalue="Python.start (1)" />
+        <item itemvalue="Python.image_caption_flow" />
         <item itemvalue="Python.test (1)" />
         <item itemvalue="Python.start" />
         <item itemvalue="Python.client_tools" />

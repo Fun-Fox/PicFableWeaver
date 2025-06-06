@@ -8,7 +8,7 @@ from pocketflow import Node
 from agent.tools.image_desc_analysis import analyze_image_description
 from agent.utils.db import DatabaseManager, ImageDBManager
 from agent.utils.image import batch_read_images, batch_convert_to_base64
-from agent.utils.mcp_client import mcp_call_tool
+from agent.mcp_client import mcp_call_tool
 
 
 class ImageCaptionNode(Node):
