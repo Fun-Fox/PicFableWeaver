@@ -1,6 +1,7 @@
 import sqlite3
 from typing import List, Tuple
 
+
 class DatabaseManager:
     def __init__(self, db_path: str = 'image_database.db'):
         self.db_path = db_path
@@ -32,13 +33,16 @@ class DatabaseManager:
         ''')
         self.conn.commit()
 
-    def insert_image_info(self, image_name: str, image_path: str, image_description: str, lens: str, composition: str, visual_style: str):
-        """插入图片信息"""
+    def insert_image_info(self, image_name: str, image_path: str, image_description: str, lens: str, composition: str,
+                          visual_style: str) -> int:
+        """插入图片信息，并返回插入记录的ID"""
         self.cursor.execute('''
             INSERT INTO image_info (image_name, image_path, image_description, lens, composition, visual_style)
             VALUES (?, ?, ?, ?, ?, ?)
         ''', (image_name, image_path, image_description, lens, composition, visual_style))
         self.conn.commit()
+        # 返回最后插入记录的ID
+        return self.cursor.lastrowid
 
     def get_all_image_info(self) -> List[Tuple]:
         """获取所有图片信息"""
@@ -50,7 +54,15 @@ class DatabaseManager:
         self.cursor.execute('SELECT * FROM image_info WHERE id = ?', (image_id,))
         return self.cursor.fetchone()
 
-    def update_image_info(self, image_id: int, image_name: str = None, image_path: str = None, image_description: str = None, lens: str = None, composition: str = None, visual_style: str = None):
+    # 新增函数：获取所有图片ID
+    def get_all_image_ids(self) -> List[int]:
+        """获取所有图片的ID"""
+        self.cursor.execute('SELECT id FROM image_info')
+        return [row[0] for row in self.cursor.fetchall()]
+
+    def update_image_info(self, image_id: int, image_name: str = None, image_path: str = None,
+                          image_description: str = None, lens: str = None, composition: str = None,
+                          visual_style: str = None):
         """更新图片信息"""
         update_fields = []
         update_values = []
@@ -72,7 +84,7 @@ class DatabaseManager:
         if visual_style:
             update_fields.append('visual_style = ?')
             update_values.append(visual_style)
-        
+
         if update_fields:
             query = f"UPDATE image_info SET {', '.join(update_fields)} WHERE id = ?"
             update_values.append(image_id)
@@ -89,9 +101,12 @@ class ImageDBManager:
     def __init__(self, db_manager: DatabaseManager):
         self.db_manager = db_manager
 
-    def process_and_store_image(self, image_name: str, image_path: str, image_description: str, lens: str, composition: str, visual_style: str):
+    def process_and_store_image(self, image_name: str, image_path: str, image_description: str, lens: str,
+                                composition: str, visual_style: str):
         """处理并存储图片信息"""
-        self.db_manager.insert_image_info(image_name, image_path, image_description, lens, composition, visual_style)
+        image_id = self.db_manager.insert_image_info(image_name, image_path, image_description, lens, composition,
+                                                     visual_style)
+        return image_id
 
     def get_all_processed_images(self) -> List[Tuple]:
         """获取所有已处理的图片信息"""
@@ -101,9 +116,12 @@ class ImageDBManager:
         """根据ID获取已处理的图片信息"""
         return self.db_manager.get_image_info_by_id(image_id)
 
-    def update_processed_image(self, image_id: int, image_name: str = None, image_path: str = None, image_description: str = None, lens: str = None, composition: str = None, visual_style: str = None):
+    def update_processed_image(self, image_id: int, image_name: str = None, image_path: str = None,
+                               image_description: str = None, lens: str = None, composition: str = None,
+                               visual_style: str = None):
         """更新已处理的图片信息"""
-        self.db_manager.update_image_info(image_id, image_name, image_path, image_description, lens, composition, visual_style)
+        self.db_manager.update_image_info(image_id, image_name, image_path, image_description, lens, composition,
+                                          visual_style)
 
     def delete_processed_image(self, image_id: int):
         """删除已处理的图片信息"""

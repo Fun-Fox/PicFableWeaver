@@ -1,7 +1,5 @@
 import os
 import base64
-from PIL import Image
-from io import BytesIO
 
 
 # 新增函数：批量读取文件夹内的图片

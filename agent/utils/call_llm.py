@@ -1,7 +1,8 @@
 import os
 import requests
 from loguru import logger
-
+from dotenv import load_dotenv
+load_dotenv()
 
 def call_local_llm(prompt, ):
     # 支持视觉与非视觉模型  ·

@@ -5,3 +5,4 @@ pyyaml>=6.0.2
 pocketflow>=0.0.1
 loguru>=0.7.3
 #liger_kernel
+python-dotenv>=0.21.0

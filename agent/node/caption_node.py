@@ -37,6 +37,8 @@ class ImageCaptionNode(Node):
                 "image_desc": image_desc
             })
 
+
+
             return image_descriptions
 
     def post(self, shared, prep_res, exec_res):
@@ -44,9 +46,21 @@ class ImageCaptionNode(Node):
         db = DatabaseManager()
         db.connect()
         image_db = ImageDBManager(db)
+        image_info_list = []
         for item in image_descriptions:
             lens, composition, visual_style = analyze_image_description(item['image_desc'])
-            image_db.process_and_store_image(item['image_path'], item['image_name'], item['image_desc'], lens=lens,
-                                             composition=composition, visual_style=visual_style)
+            image_id = image_db.process_and_store_image(item['image_path'], item['image_name'], item['image_desc'],
+                                                        lens=lens,
+                                                        composition=composition, visual_style=visual_style)
+            image_info_list.append({
+                'image_id': image_id,
+                'image_path': item['image_path'],
+                'image_name': item['image_name'],
+                'image_desc': item['image_desc'],
+                'lens': lens,
+                'composition': composition,
+                'visual_style': visual_style
+            })
+        shared['image_info_list'] = image_info_list
         db.close()
         return "desc"

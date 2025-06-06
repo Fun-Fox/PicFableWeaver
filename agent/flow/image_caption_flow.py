@@ -1,6 +1,7 @@
 from pocketflow import Node, Flow
 
 from agent.node.caption_node import ImageCaptionNode
+from agent.node.weaver_node import PicWeaverNode
 
 
 class NoOp(Node):
@@ -12,10 +13,11 @@ if __name__ == "__main__":
     image_dir = ""
     # Create nodes
     image_caption = ImageCaptionNode()
+    pic_weaver = PicWeaverNode()
     end = NoOp()
 
     # Connect nodes
-    image_caption - "desc" >> end
+    image_caption - "desc" >> pic_weaver
 
     # Create and run flow
     flow = Flow(start=image_caption)
