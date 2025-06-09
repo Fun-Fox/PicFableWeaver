@@ -1,4 +1,4 @@
-from agent.utils.call_llm import call_local_llm
+from agent.utils.call_llm import  call_llm
 import yaml
 from loguru import logger
 
@@ -39,7 +39,7 @@ visual_style: |
 - 单行字段不使用|字符
 - 非键值对不允许随意使用冒号: 
 """
-    result, success = call_local_llm(prompt)
+    result, success = call_llm(prompt)
     if success:
         try:
             # 尝试将结果解析为 YAML 格式

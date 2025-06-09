@@ -6,6 +6,12 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
+def call_llm(prompt):
+    if os.getenv("MODEL_PLATFORM") == "cloud":
+        return call_cloud_model(prompt)
+    return call_local_llm(prompt)
+
+
 def call_local_llm(prompt, ):
     # 支持视觉与非视觉模型  ·
     try:
@@ -29,26 +35,11 @@ def call_local_llm(prompt, ):
         return "错误: 调用LLM时发生异常。", False
 
 
-api_key = os.getenv("CLOUD_API_KEY")
-api_url = os.getenv("CLOUD_API_URL")
-MAX_RETRIES = 2
-
-
-def call_cloud_model(prompt):
-    """评估图片与叙事的相关性，并对图片进行评分。
-
-    Args:
-        image_path: 图片文件路径。
-        logger
-    Returns:
-        包含评估结果的字典。
-        :param model_name:
-        :param logger:
-        :param image_path:
-        :param prompt:
-    """
+def call_cloud_model(prompt, max_retries=2):
+    api_key = os.getenv("CLOUD_API_KEY")
+    api_url = os.getenv("CLOUD_API_URL")
     model_name = os.getenv("CLOUD_MODEL_NAME")
-    for attempt in range(MAX_RETRIES):
+    for attempt in range(max_retries):
         try:
 
             logger.info(f"使用云端模型{os.getenv('CLOUD_MODEL_NAME')},进行语言(非视觉)操作")
@@ -57,7 +48,7 @@ def call_cloud_model(prompt):
                 'Content-Type': 'application/json',
                 'Authorization': f'Bearer {api_key}'
             }
-            payload = _build_payload(prompt,  model_name)
+            payload = _build_payload(prompt, model_name)
             response = requests.post(api_url, json=payload, headers=headers)
             if response.status_code == 200:
                 try:

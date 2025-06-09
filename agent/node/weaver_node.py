@@ -1,6 +1,6 @@
 from pocketflow import Node
 
-from agent.utils.call_llm import call_local_llm
+from agent.utils.call_llm import call_llm
 from loguru import logger
 
 from agent.utils.db import DatabaseManager, ImageDBManager
@@ -72,7 +72,7 @@ scenes:
 视觉风格：{item['visual_style']}
 """
         logger.info(prompt)
-        result, success = call_local_llm(prompt)
+        result, success = call_llm(prompt)
         if success:
             print(result)
             return result
