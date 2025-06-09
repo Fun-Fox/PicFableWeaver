@@ -21,7 +21,7 @@ class DatabaseManager:
         if self.conn:
             self.conn.close()
 
-    def create_image_table(self):
+    def create_image_info_table(self):
         """创建图片信息表"""
         self.cursor.execute('''
             CREATE TABLE IF NOT EXISTS image_info (

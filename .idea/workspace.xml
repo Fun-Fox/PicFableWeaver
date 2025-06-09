@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="153aec6d-2f38-457f-b038-d60f7ce42a5f" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/database/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/image_manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent/agent_start.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/agent_start.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent/flow/image_caption_flow.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/flow/caption_flow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent/flow/weaver_flow.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/flow/weaver_flow.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/agent/node/caption_node.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/node/caption_node.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent/node/weaver_node.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/node/weaver_node.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent/utils/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/db_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/image_database.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/image_database.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/db_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/db_manager.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
