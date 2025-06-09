@@ -32,7 +32,7 @@ async def test_mcp_server():
             await ws.send(json.dumps(payload_2))
             response = await ws.recv()
             print("来自服务器的响应:")
-            print(json.dumps(json.loads(response, encoding="utf-8"), indent=2, ))
+            print(json.dumps(json.loads(response), indent=2, ensure_ascii=False))
     except Exception as e:
         print(f"WebSocket错误: {e}")
 
