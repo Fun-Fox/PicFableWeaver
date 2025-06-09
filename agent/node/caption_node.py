@@ -32,6 +32,7 @@ class ImageCaptionNode(Node):
             }
             start_time = time.time()
             image_desc = mcp_call_tool(tool_name, parameters)
+            logger.info(f"第{idx}张图，图片文件名称：{file_name}，\n 图片描述：{image_desc}")
             sleep(10)
             image_path = item['image_path']
             file_name = os.path.basename(image_path)
