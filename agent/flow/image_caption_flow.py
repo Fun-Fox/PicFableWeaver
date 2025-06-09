@@ -10,7 +10,7 @@ class NoOp(Node):
 
 
 if __name__ == "__main__":
-    image_dir = "D:\\PycharmProjects\\PicFableWeaver\\example"
+    image_dir = "../../example"
     # Create nodes
     image_caption = ImageCaptionNode()
     pic_weaver = PicWeaverNode()

@@ -2,7 +2,7 @@ import os
 import random
 from PIL import Image
 
-from remote_mcp_server.start import generate_image_caption
+from remote_caption_mcp_server.caption_start import generate_image_caption
 
 if __name__ == "__main__":
     import triton

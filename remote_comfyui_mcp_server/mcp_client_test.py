@@ -18,7 +18,7 @@ payload_2 = {
     "tool": "generate_image_to_video",
     "params": json.dumps({
         "prompt": "an english mastiff dog sitting on a large boulder, bright shiny day",
-        "image_path": "D:\\PycharmProjects\\PicFableWeaver\\example\\2 (1).jpg",
+        "image_path": "../../example/2 (1).jpg",
         "workflow_id": "hy_image_to_video_api"
     })
 }
