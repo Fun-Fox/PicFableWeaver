@@ -73,9 +73,9 @@ def call_cloud_model(prompt, max_retries=2):
             logger.warning(f"第 {attempt + 1} 次尝试失败，状态码: {response.status_code}")
         except Exception as e:
             logger.warning(f"第 {attempt + 1} 次尝试失败: {str(e)}")
-            if attempt == MAX_RETRIES - 1:
+            if attempt == max_retries - 1:
                 logger.error("所有尝试均失败")
-                raise Exception(f"评估图片相关性失败，尝试 {MAX_RETRIES} 次后仍未成功: {str(e)}")
+                raise Exception(f"评估图片相关性失败，尝试 {max_retries} 次后仍未成功: {str(e)}")
     raise Exception("evaluate_image_relevance 方法中发生意外错误")
 
 

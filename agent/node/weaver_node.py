@@ -1,4 +1,5 @@
 from pocketflow import Node
+from pydantic_settings.sources.providers.yaml import yaml
 
 from agent.utils.call_llm import call_llm
 from loguru import logger
@@ -73,9 +74,12 @@ scenes:
 """
         logger.info(prompt)
         result, success = call_llm(prompt)
+
         if success:
-            print(result)
-            return result
+            yaml_str = result.split("```yaml")[1].split("```")[0].strip()
+            logger.info(f"分析结果: {yaml_str}")
+            analysis = yaml.safe_load(yaml_str)
+            return analysis
         else:
             return "无法生成分析结果，请稍后再试。"
 
