@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="153aec6d-2f38-457f-b038-d60f7ce42a5f" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remote_caption_mcp_server/demo.py" beforeDir="false" afterPath="$PROJECT_DIR$/remote_caption_mcp_server/demo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,17 +53,17 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/PycharmProjects/PicFableWeaver/remote_comfyui_mcp_server/mappings",
+    "last_opened_file_path": "D:/PycharmProjects/PicFableWeaver/remote_comfyui_mcp_server",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\PycharmProjects\PicFableWeaver\remote_comfyui_mcp_server" />
       <recent name="D:\PycharmProjects\PicFableWeaver\remote_comfyui_mcp_server\mappings" />
       <recent name="D:\PycharmProjects\PicFableWeaver\remote_mcp_server" />
       <recent name="D:\PycharmProjects\PicFableWeaver\image_caption_agent\mcp_server" />
       <recent name="D:\PycharmProjects\PicFableWeaver\example" />
-      <recent name="D:\PycharmProjects\PicFableWeaver\image_caption_agent" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\PycharmProjects\PicFableWeaver\remote_comfyui_mcp_server" />

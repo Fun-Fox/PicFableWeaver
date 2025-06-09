@@ -54,8 +54,8 @@ PicFableWeaver 能够将日常随手拍的图片转化为引人入胜的视频�
 ### 部署远程MCP服务
 
 ```commandline
-# 安装依赖
-cd remote_mcp_server
+# 安装图片反推模型（图片打标）依赖
+cd remote_caption_mcp_server
 pip install -r requirements.txt
 
 # 下载LLaVA模型
@@ -71,6 +71,11 @@ pip install --pre torch torchvision torchaudio --index-url https://download.pyto
 #pip install -U triton-windows
 #https://blog.csdn.net/a486259/article/details/146451953
 #pip install liger-kernel --no-dependencies
+
+# 安装comfyui-mcp
+cd..
+cd remote_comfyui_mcp_server
+pip install -r requirements.txt
 ```
 
 ### 启动服务
