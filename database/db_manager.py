@@ -13,12 +13,13 @@ class DatabaseManager:
 
     def connect(self):
         """连接到SQLite数据库"""
-        self.conn = sqlite3.connect(self.db_path)
-        self.cursor = self.conn.cursor()
+        if not self.conn or self.conn.closed:
+            self.conn = sqlite3.connect(self.db_path)
+            self.cursor = self.conn.cursor()
 
     def close(self):
         """关闭数据库连接"""
-        if self.conn:
+        if self.conn and not self.conn.closed:
             self.conn.close()
 
     def create_image_info_table(self):
@@ -49,6 +50,7 @@ class DatabaseManager:
 
     def get_all_image_info(self, id_list: list = None) -> list:
         """获取指定ID列表的图片信息，如果id_list为空则获取所有图片"""
+
         if id_list and isinstance(id_list, list) and len(id_list) > 0:
             # 构建带IN查询的SQL语句
             query = f"SELECT * FROM image_info WHERE id IN ({','.join('?' * len(id_list))})"

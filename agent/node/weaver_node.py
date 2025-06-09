@@ -15,7 +15,6 @@ class PicWeaverNode(Node):
         image_id_list = shared["image_id_list"]
         db = DatabaseManager(db_path=db_path)
         db.connect()
-        db.create_image_table()
         image_db = ImageDBManager(db)
         image_info_list = image_db.get_all_processed_images(image_id_list)
 
