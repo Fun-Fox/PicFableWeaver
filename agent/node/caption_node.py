@@ -74,7 +74,7 @@ class ImageCaptionNode(Node):
         image_descriptions = exec_res
         db = DatabaseManager()
         db.connect()
-        db.create_table()
+        db.create_image_table()
         image_db = ImageDBManager(db)
         image_info_list = []
         for item in image_descriptions:
@@ -111,7 +111,7 @@ class ImageDescStructNode(Node):
         image_info_list = exec_res
         db = DatabaseManager()
         db.connect()
-        db.create_table()
+        db.create_image_table()
         image_db = ImageDBManager(db)
         for item in image_info_list:
             image_db.update_processed_image(item['image_id'], item['image_path'], item['image_name'],

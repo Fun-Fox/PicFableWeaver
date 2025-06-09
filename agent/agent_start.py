@@ -1,6 +1,7 @@
 import os
 
-from agent.flow.image_caption_flow import caption_flow, weaver_flow
+from agent.flow.image_caption_flow import caption_flow
+from agent.flow.weaver_flow import weaver_flow
 
 root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 

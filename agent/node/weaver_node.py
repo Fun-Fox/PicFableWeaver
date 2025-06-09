@@ -12,7 +12,7 @@ class PicWeaverNode(Node):
         db_path = shared["db_path"]
         db = DatabaseManager(db_path=db_path)
         db.connect()
-        db.create_table()
+        db.create_image_table()
         image_db = ImageDBManager(db)
         image_info_list = image_db.get_all_processed_images()
 
@@ -80,5 +80,24 @@ scenes:
             return "无法生成分析结果，请稍后再试。"
 
     def post(self, shared, prep_res, exec_res):
+        if isinstance(exec_res, dict) and "scenes" in exec_res:
+            db_path = shared.get("db_path")
+            db = DatabaseManager(db_path=db_path)
+            db.connect()
+            db.create_script_table()  # 创建或确保剧本表存在
 
+            # 设置唯一脚本ID（如时间戳）
+            import time
+            script_id = f"script_{int(time.time())}"
+            exec_res["script_id"] = script_id
+
+            # 插入剧本与分镜数据
+            db.insert_script_scene_info(exec_res)
+
+            db.close()
+            logger.info("剧本与分镜信息已成功保存。")
+            return "done"
+        else:
+            logger.warning("无法识别剧本格式，未执行保存。")
+            return "failed"
         return "done"
