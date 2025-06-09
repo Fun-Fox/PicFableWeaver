@@ -18,8 +18,9 @@ class ImageCaptionNode(Node):
 
     def exec(self, image_dir):
         """Execute the chosen tool"""
-
+        logger.info(f"开始执行图片描述任务")
         image_paths = batch_read_images(image_dir)
+        logger.info(f"图片数量：{len(image_paths)}")
 
         image_base64_list = batch_convert_to_base64(image_paths)
 

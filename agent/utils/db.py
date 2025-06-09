@@ -1,9 +1,12 @@
+import os
 import sqlite3
 from typing import List, Tuple
 
+current_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 
 class DatabaseManager:
-    def __init__(self, db_path: str = '../../db/image_database.db'):
+    def __init__(self, db_path: str = os.path.join(current_dir, 'db/image_database.db')):
         self.db_path = db_path
         self.conn = None
         self.cursor = None
