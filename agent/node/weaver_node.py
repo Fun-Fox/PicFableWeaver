@@ -1,5 +1,5 @@
 from pocketflow import Node
-from pydantic_settings.sources.providers.yaml import yaml
+import yaml
 
 from agent.utils.call_llm import call_llm
 from loguru import logger
