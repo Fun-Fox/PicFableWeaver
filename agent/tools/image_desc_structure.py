@@ -53,10 +53,10 @@ visual_style: |
             else:
                 # 如果解析失败或格式不正确，返回错误信息
                 logger.error(f"错误: LLM 返回的结果格式不正确。")
-                return None, None, None
+                return '', '', ''
         except yaml.YAMLError:
             logger.error(f"错误: LLM 返回的结果格式不正确。")
-            return None, None, None
+            return '', '', ''
     else:
         logger.error(f"无法生成分析结果，请稍后再试。")
-        return None, None, None
+        return '', '', ''

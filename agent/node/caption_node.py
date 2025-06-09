@@ -78,22 +78,46 @@ class ImageCaptionNode(Node):
         image_db = ImageDBManager(db)
         image_info_list = []
         for item in image_descriptions:
-            lens, composition, visual_style = analyze_image_structure(item['image_desc'])
-            if lens and composition and visual_style:
-                logger.info(f"图片描述结构：{lens}\n，{composition}\n，{visual_style}")
-
             image_id = image_db.process_and_store_image(item['image_path'], item['image_name'], item['image_desc'],
-                                                        lens=lens,
-                                                        composition=composition, visual_style=visual_style)
+                                                        lens="",
+                                                        composition="", visual_style="")
             image_info_list.append({
                 'image_id': image_id,
                 'image_path': item['image_path'],
                 'image_name': item['image_name'],
-                'image_desc': item['image_desc'],
-                'lens': lens,
-                'composition': composition,
-                'visual_style': visual_style
+                'image_desc': item['image_desc']
             })
         shared['image_info_list'] = image_info_list
+        db.close()
+        return "desc"
+
+
+class ImageDescStructNode(Node):
+    def prep(self, shared):
+        """Prepare tool execution parameters"""
+        return shared["image_info_list"]
+
+    def exec(self, image_info_list):
+        for item in image_info_list:
+            lens, composition, visual_style = analyze_image_structure(item['image_desc'])
+
+            item['lens'] = lens
+            item['composition'] = composition
+            item['visual_style'] = visual_style
+            logger.info(f"图片描述结构：{lens}\n，{composition}\n，{visual_style}")
+        return image_info_list
+
+    def post(self, shared, prep_res, exec_res):
+        image_info_list = exec_res
+        db = DatabaseManager()
+        db.connect()
+        db.create_table()
+        image_db = ImageDBManager(db)
+        for item in image_info_list:
+            image_db.update_processed_image(item['image_id'], item['image_path'], item['image_name'],
+                                            item['image_desc'],
+                                            lens=item['lens'],
+                                            composition=item['composition'],
+                                            visual_style=item['visual_style'])
         db.close()
         return "desc"

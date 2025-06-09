@@ -104,8 +104,8 @@ class ImageDBManager:
     def __init__(self, db_manager: DatabaseManager):
         self.db_manager = db_manager
 
-    def process_and_store_image(self, image_name: str, image_path: str, image_description: str, lens: str,
-                                composition: str, visual_style: str):
+    def process_and_store_image(self, image_name: str, image_path: str, image_description: str, lens: str="",
+                                composition: str="", visual_style: str=""):
         """处理并存储图片信息"""
         image_id = self.db_manager.insert_image_info(image_name, image_path, image_description, lens, composition,
                                                      visual_style)
