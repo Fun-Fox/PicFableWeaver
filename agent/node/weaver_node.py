@@ -21,14 +21,14 @@ class PicWeaverNode(Node):
     def exec(self, image_info_list):
         """Execute the chosen tool"""
 
-        prompt = """请根据以下图片描述创作一个创意短片方案，包含剧本和分镜两大部分：
+        prompt = """你是一位专业的影视编剧，请基于以下图片信息，为一部科幻动画短片撰写完整的剧本与分镜脚本。
 
-## 剧本创作要求：
-
-1. 从提供的图片中选择3-5张最具表现力的图片进行创作
-2. 生成一个连贯的故事梗概（150-200字）
-3. 需包含：故事主题、关键转折点、情感基调
-4. 保持语言的艺术性和创造性
+## 创作要求
+1. 从提供的图片中选择3~5张最具表现力的画面进行创作。
+2. 故事梗概需控制在150-200字之间，需包含主题、关键转折点、情感基调。
+3. 每个分镜对应一张图片，包含镜头、构图、视觉风格、运镜方式、主体动作、转场效果等内容。
+4. 输出格式为严格的YAML格式，使用|符号表示多行字段，缩进为4个空格。
+5. 不得出现冒号: 或Markdown语法。
 
 ## 输出格式
 
@@ -41,36 +41,26 @@ key_plot_points: |
     <关键转折点>
 emotional_tone: |
     <情感基调>
+background_music_prompt: | 
+    <AI生背景音乐的推荐提示词>
 
 scenes:
   - scene_number: Scene 1
     image_id: <图片ID>
-    lens: |
-        <镜头描述>
-    composition: |
-        <构图描述>
-    visual_style: |
-        <视觉风格描述>
     camera_movement: |
         <运镜方式>
     subject_action: |
         <主体动作>
     transition_effect: |
         <转场效果建议>
+    image_to_video_prompt: |
+        <图生视频推荐提示词>
+    narration_subtitle: | 
+        <该画面的旁白字幕内容>
 ```
+注意：你将看到多张图像，这些图像可能包含关键人物、场景或情绪线索，请结合图像内容进行剧本创作。
 
-## 重要：请确保：
-
-- 顶层字段（如 story_theme, plot_summary）用于剧本部分
-- scenes 列表 包含多个分镜描述Scene 1，Scene 2，Scene 3等等
-- 每个分镜对应一张图片
-- 使用中文描述
-- 使用YAML格式返回响应
-- 使用|字符表示多行文本字段
-- 多行字段使用缩进（4个空格）
-- 非键值对不允许随意使用冒号: 
-
-## 图片素材：
+## 图片素材
 
 """
         for item in image_info_list:
