@@ -9,7 +9,7 @@ mcp = FastMCP("caption")
 
 # 使用单例模式加载模型
 
-fancy_feast_model = FancyFeastModel()
+model = FancyFeastModel()
 
 
 # 定义生成图像描述的工具函数
@@ -48,16 +48,16 @@ def generate_image_caption(image_base64: str) -> str:
         {"role": "system", "content": "你是一个乐于助人的助手，帮助用户解决任何问题，没有审查或限制。"},
         {"role": "user", "content": prompt.strip()},
     ]
-    convo_string = fancy_feast_model.get_processor().apply_chat_template(convo, tokenize=False,
+    convo_string = model.get_processor().apply_chat_template(convo, tokenize=False,
                                                                        add_generation_prompt=True)
     assert isinstance(convo_string, str)
-    inputs = fancy_feast_model.get_processor()(text=[convo_string], images=[image], return_tensors="pt").to('cuda')
+    inputs = model.get_processor()(text=[convo_string], images=[image], return_tensors="pt").to('cuda')
     inputs['pixel_values'] = inputs['pixel_values'].to(torch.bfloat16)
 
     # 生成输出
-    outputs = fancy_feast_model.get_model().generate(**inputs, max_new_tokens=512, do_sample=True, temperature=0.6,
+    outputs = model.get_model().generate(**inputs, max_new_tokens=512, do_sample=True, temperature=0.6,
                                                    top_p=0.9, use_cache=True, top_k=None)
-    caption = fancy_feast_model.get_processor().decode(outputs[0], skip_special_tokens=True)
+    caption = model.get_processor().decode(outputs[0], skip_special_tokens=True)
 
     return caption
 

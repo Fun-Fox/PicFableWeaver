@@ -5,18 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="153aec6d-2f38-457f-b038-d60f7ce42a5f" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/mappings/hy_image_to_video_api.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/mcp_client.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/workflows/hy_image_to_video_api.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remote_comfyui_mcp_server/client.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/remote_comfyui_mcp_server/comfyui_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/comfyui_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remote_comfyui_mcp_server/comfyui_workflow_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/remote_comfyui_mcp_server/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remote_comfyui_mcp_server/workflows/HY图生视频.json" beforeDir="false" afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/workflows/hy_image_to_video.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remote_comfyui_mcp_server/workflows/basic.json" beforeDir="false" afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/workflows/basic.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remote_comfyui_mcp_server/workflows/basic_api_test.json" beforeDir="false" afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/workflows/basic_api.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/remote_caption_mcp_server/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/remote_caption_mcp_server/start.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
