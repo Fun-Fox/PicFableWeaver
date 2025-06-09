@@ -1,5 +1,7 @@
 import os
 import gradio as gr
+import pandas as pd
+
 from agent.agent_start import caption_flow, weaver_flow
 from database.db_manager import DatabaseManager
 
@@ -63,11 +65,18 @@ with gr.Blocks() as demo:
         # 说明：展示所有图片信息并选择图片ID来执行 Weaver Flow
         def update_image_info():
             image_info = db_manager.get_all_image_info()
-            return "\n".join([f"ID: {info['id']}, Name: {info['image_name']}" for info in image_info])
+            # 返回 pandas DataFrame 以适配 gr.Dataframe
+            return pd.DataFrame({
+                "ID": [info['id'] for info in image_info],
+                "图片描述": [info['image_description'] for info in image_info],
+                "图片存储位置": [info['image_name'] for info in image_info]
+            })
 
-
-        image_info_output = gr.Textbox(label="已完成返回的图片信息展示", value=update_image_info(), interactive=False)
-
+        image_info_output = gr.Dataframe(
+            headers=["ID", "图片描述", "图片存储位置"],
+            value=update_image_info(),
+            label="已完成返回的图片信息展示"
+        )
 
         # 优化：动态更新CheckboxGroup的choices
         def get_image_id_list():
@@ -91,7 +100,7 @@ with gr.Blocks() as demo:
             return list(script_ids.keys())
 
 
-        script_dropdown = gr.Dropdown(choices=get_script_dropdown(), label="选择剧本 ID")
+        script_dropdown = gr.Dropdown(choices=[''] + get_script_dropdown(), label="选择剧本 ID")
         script_details_output = gr.Textbox(label="剧本详细信息")
 
         script_dropdown.change(get_script_details, inputs=script_dropdown, outputs=script_details_output)

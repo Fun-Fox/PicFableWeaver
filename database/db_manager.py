@@ -1,6 +1,7 @@
 import os
 import sqlite3
 from typing import List, Tuple
+import threading
 
 root_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -10,12 +11,18 @@ class DatabaseManager:
         self.db_path = db_path
         self.conn = None
         self.cursor = None
+        self.local = threading.local()  # 每个线程拥有自己的连接
 
     def connect(self):
         """连接到SQLite数据库"""
         if not self.conn or self.conn.closed:
-            self.conn = sqlite3.connect(self.db_path)
+            self.conn  = self._get_connection()
             self.cursor = self.conn.cursor()
+
+    def _get_connection(self):
+        if not hasattr(self.local, 'conn'):
+            self.local.conn = sqlite3.connect(self.db_path, check_same_thread=False)
+        return self.local.conn
 
     def close(self):
         """关闭数据库连接"""
