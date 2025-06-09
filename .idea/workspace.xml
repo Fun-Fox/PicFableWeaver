@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="153aec6d-2f38-457f-b038-d60f7ce42a5f" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/database/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/image_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/agent_start.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/agent_start.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/flow/image_caption_flow.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/flow/caption_flow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/flow/weaver_flow.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/flow/weaver_flow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/node/caption_node.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/node/caption_node.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/agent/node/weaver_node.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/node/weaver_node.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/utils/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/db_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/image_database.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/image_database.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +57,7 @@
     "Python.test_mcp_server (1).executor": "Run",
     "Python.test_mcp_server.executor": "Run",
     "Python.use_mcp_tools (1).executor": "Run",
+    "Python.webui.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
@@ -64,14 +74,14 @@
       <recent name="D:\PycharmProjects\PicFableWeaver\image_caption_agent\mcp_server" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\PycharmProjects\PicFableWeaver\database" />
       <recent name="D:\PycharmProjects\PicFableWeaver\remote_comfyui_mcp_server" />
       <recent name="D:\PycharmProjects\PicFableWeaver\remote_comfyui_mcp_server\workflows" />
       <recent name="D:\PycharmProjects\PicFableWeaver\db" />
       <recent name="D:\PycharmProjects\PicFableWeaver\agent" />
-      <recent name="D:\PycharmProjects\PicFableWeaver\agent\mcp_client" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.agent_start">
+  <component name="RunManager" selected="Python.webui">
     <configuration name="agent_start" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PicFableWeaver" />
       <option name="ENV_FILES" value="" />
@@ -160,7 +170,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="start (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="webui" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PicFableWeaver" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -169,11 +179,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/remote_mcp_server" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/webui" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/remote_mcp_server/start.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/webui/webui.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -184,11 +194,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.webui" />
         <item itemvalue="Python.agent_start" />
         <item itemvalue="Python.demo" />
         <item itemvalue="Python.mcp_client_test" />
         <item itemvalue="Python.comfyui_mcp_start" />
-        <item itemvalue="Python.start (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -240,11 +250,6 @@
           <url>file://$PROJECT_DIR$/remote_comfyui_mcp_server/comfyui_client.py</url>
           <line>88</line>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/agent/agent_start.py</url>
-          <line>7</line>
-          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

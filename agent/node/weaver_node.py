@@ -4,18 +4,20 @@ import yaml
 from agent.utils.call_llm import call_llm
 from loguru import logger
 
-from agent.utils.db import DatabaseManager, ImageDBManager
+from database.db_manager import DatabaseManager
+from database.image_manager import ImageDBManager
 
 
 class PicWeaverNode(Node):
     def prep(self, shared):
         """Prepare tool execution parameters"""
         db_path = shared["db_path"]
+        image_id_list = shared["image_id_list"]
         db = DatabaseManager(db_path=db_path)
         db.connect()
         db.create_image_table()
         image_db = ImageDBManager(db)
-        image_info_list = image_db.get_all_processed_images()
+        image_info_list = image_db.get_all_processed_images(image_id_list)
 
         return image_info_list
 

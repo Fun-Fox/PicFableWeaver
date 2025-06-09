@@ -35,6 +35,9 @@ def extract_sections(text):
 
 
 class ImageCaptionNode(Node):
+    """
+    图片标注、反推描述
+    """
     def prep(self, shared):
         """Prepare tool execution parameters"""
         return shared["image_dir"]
@@ -74,10 +77,11 @@ class ImageCaptionNode(Node):
         image_descriptions = exec_res
         db = DatabaseManager()
         db.connect()
-        db.create_image_table()
+        db.create_table()
         image_db = ImageDBManager(db)
         image_info_list = []
         for item in image_descriptions:
+
             image_id = image_db.process_and_store_image(item['image_path'], item['image_name'], item['image_desc'],
                                                         lens="",
                                                         composition="", visual_style="")
@@ -89,10 +93,13 @@ class ImageCaptionNode(Node):
             })
         shared['image_info_list'] = image_info_list
         db.close()
-        return "finish"
+        return "desc"
 
 
 class ImageDescStructNode(Node):
+    """
+    图片描述格式化，更新数据库
+    """
     def prep(self, shared):
         """Prepare tool execution parameters"""
         return shared["image_info_list"]

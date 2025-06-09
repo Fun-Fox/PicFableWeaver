@@ -47,10 +47,16 @@ class DatabaseManager:
         # 返回最后插入记录的ID
         return self.cursor.lastrowid
 
-    def get_all_image_info(self) -> List[Tuple]:
-        """获取所有图片信息，并返回包含字段名的字典列表"""
-        self.cursor.execute('SELECT * FROM image_info')
-        columns = [desc[0] for desc in self.cursor.description]  # 获取字段名
+    def get_all_image_info(self, id_list: list = None) -> list:
+        """获取指定ID列表的图片信息，如果id_list为空则获取所有图片"""
+        if id_list and isinstance(id_list, list) and len(id_list) > 0:
+            # 构建带IN查询的SQL语句
+            query = f"SELECT * FROM image_info WHERE id IN ({','.join('?' * len(id_list))})"
+            self.cursor.execute(query, id_list)
+        else:
+            self.cursor.execute("SELECT * FROM image_info")
+
+        columns = [desc[0] for desc in self.cursor.description]
         return [dict(zip(columns, row)) for row in self.cursor.fetchall()]
 
     def get_image_info_by_id(self, image_id: int) -> Tuple:
@@ -240,32 +246,3 @@ class DatabaseManager:
         ]
 
 
-class ImageDBManager:
-    def __init__(self, db_manager: DatabaseManager):
-        self.db_manager = db_manager
-
-    def process_and_store_image(self, image_name: str, image_path: str, image_description: str, lens: str = "",
-                                composition: str = "", visual_style: str = ""):
-        """处理并存储图片信息"""
-        image_id = self.db_manager.insert_image_info(image_name, image_path, image_description, lens, composition,
-                                                     visual_style)
-        return image_id
-
-    def get_all_processed_images(self) -> List[Tuple]:
-        """获取所有已处理的图片信息"""
-        return self.db_manager.get_all_image_info()
-
-    def get_processed_image_by_id(self, image_id: int) -> Tuple:
-        """根据ID获取已处理的图片信息"""
-        return self.db_manager.get_image_info_by_id(image_id)
-
-    def update_processed_image(self, image_id: int, image_name: str = None, image_path: str = None,
-                               image_description: str = None, lens: str = None, composition: str = None,
-                               visual_style: str = None):
-        """更新已处理的图片信息"""
-        self.db_manager.update_image_info(image_id, image_name, image_path, image_description, lens, composition,
-                                          visual_style)
-
-    def delete_processed_image(self, image_id: int):
-        """删除已处理的图片信息"""
-        self.db_manager.delete_image_info(image_id)
