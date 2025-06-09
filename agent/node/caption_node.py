@@ -89,7 +89,7 @@ class ImageCaptionNode(Node):
             })
         shared['image_info_list'] = image_info_list
         db.close()
-        return "desc"
+        return "finish"
 
 
 class ImageDescStructNode(Node):
@@ -120,4 +120,4 @@ class ImageDescStructNode(Node):
                                             composition=item['composition'],
                                             visual_style=item['visual_style'])
         db.close()
-        return "desc"
+        return "finish"
