@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="153aec6d-2f38-457f-b038-d60f7ce42a5f" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent/mcp_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/mcp_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent/node/caption_node.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/node/caption_node.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/系统设计.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/example/系统设计.drawio" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/agent_start.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/agent_start.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/flow/image_caption_flow.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/flow/image_caption_flow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/node/weaver_node.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/node/weaver_node.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/utils/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/utils/db.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +56,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "D:/PycharmProjects/PicFableWeaver",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -244,6 +244,11 @@
           <url>file://$PROJECT_DIR$/remote_comfyui_mcp_server/comfyui_client.py</url>
           <line>88</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/agent/agent_start.py</url>
+          <line>6</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

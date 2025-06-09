@@ -2,11 +2,11 @@ import os
 import sqlite3
 from typing import List, Tuple
 
-current_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+root_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
 class DatabaseManager:
-    def __init__(self, db_path: str = os.path.join(current_dir, 'db/image_database.db')):
+    def __init__(self, db_path: str = os.path.join(root_dir, 'db/image_database.db')):
         self.db_path = db_path
         self.conn = None
         self.cursor = None
@@ -48,9 +48,10 @@ class DatabaseManager:
         return self.cursor.lastrowid
 
     def get_all_image_info(self) -> List[Tuple]:
-        """获取所有图片信息"""
+        """获取所有图片信息，并返回包含字段名的字典列表"""
         self.cursor.execute('SELECT * FROM image_info')
-        return self.cursor.fetchall()
+        columns = [desc[0] for desc in self.cursor.description]  # 获取字段名
+        return [dict(zip(columns, row)) for row in self.cursor.fetchall()]
 
     def get_image_info_by_id(self, image_id: int) -> Tuple:
         """根据ID获取图片信息"""
@@ -104,8 +105,8 @@ class ImageDBManager:
     def __init__(self, db_manager: DatabaseManager):
         self.db_manager = db_manager
 
-    def process_and_store_image(self, image_name: str, image_path: str, image_description: str, lens: str="",
-                                composition: str="", visual_style: str=""):
+    def process_and_store_image(self, image_name: str, image_path: str, image_description: str, lens: str = "",
+                                composition: str = "", visual_style: str = ""):
         """处理并存储图片信息"""
         image_id = self.db_manager.insert_image_info(image_name, image_path, image_description, lens, composition,
                                                      visual_style)

@@ -1,15 +1,26 @@
 from pocketflow import Node
 
 from agent.utils.call_llm import call_local_llm
+from loguru import logger
+
+from agent.utils.db import DatabaseManager, ImageDBManager
 
 
 class PicWeaverNode(Node):
     def prep(self, shared):
         """Prepare tool execution parameters"""
-        return shared["image_info_list"]
+        db_path = shared["db_path"]
+        db = DatabaseManager(db_path=db_path)
+        db.connect()
+        db.create_table()
+        image_db = ImageDBManager(db)
+        image_info_list = image_db.get_all_processed_images()
+
+        return image_info_list
 
     def exec(self, image_info_list):
         """Execute the chosen tool"""
+
         prompt = """请根据以下图片描述创作一个创意短片方案，包含剧本和分镜两大部分：
 
 ## 剧本创作要求：
@@ -64,13 +75,13 @@ scenes:
 """
         for item in image_info_list:
             prompt += f"""
-### 图片ID: {item["image_id"]}
+### 图片ID: {item["id"]}
 
 镜头：{item['lens']}
 构图：{item['composition']}
 视觉风格：{item['visual_style']}
 """
-
+        logger.info(prompt)
         result, success = call_local_llm(prompt)
         if success:
             print(result)
