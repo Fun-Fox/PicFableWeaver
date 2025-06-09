@@ -9,17 +9,17 @@ class NoOp(Node):
     pass
 
 
-if __name__ == "__main__":
-    image_dir = "../../example"
+def caption_flow(image_dir):
     # Create nodes
     image_caption = ImageCaptionNode()
     pic_weaver = PicWeaverNode()
     end = NoOp()
-
     # Connect nodes
     image_caption - "desc" >> pic_weaver
-
     # Create and run flow
     flow = Flow(start=image_caption)
     shared = {"image_dir": image_dir}
     flow.run(shared)
+
+
+
