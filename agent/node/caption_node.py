@@ -11,6 +11,27 @@ from agent.utils.image import batch_read_images, batch_convert_to_base64
 from agent.mcp_client import mcp_call_tool
 
 
+def extract_sections(text):
+    # 分割文本为多个部分
+    parts = text.split("\n\n")
+
+    # 初始化变量存储结果
+    user_content = ""
+    system_content = ""
+    assistant_content = ""
+
+    # 提取 user 和 system 内容
+    for part in parts:
+        if "user" in part:
+            user_content = part.replace("user", "").strip()
+        elif "system" in part:
+            system_content = part.replace("system", "").strip()
+        elif "assistant" in part:
+            assistant_content = part.replace("assistant", "").strip()
+
+    return user_content, system_content, assistant_content
+
+
 class ImageCaptionNode(Node):
     def prep(self, shared):
         """Prepare tool execution parameters"""
@@ -31,7 +52,8 @@ class ImageCaptionNode(Node):
                 "image_base64": item["base64_image"]
             }
             start_time = time.time()
-            image_desc = mcp_call_tool(tool_name, parameters)
+            result = mcp_call_tool(tool_name, parameters)
+            _, _, image_desc = extract_sections(result)
             image_path = item['image_path']
             file_name = os.path.basename(image_path)
             logger.info(f"第{idx}张图，图片文件名称：{file_name}，\n 图片描述：{image_desc}")
