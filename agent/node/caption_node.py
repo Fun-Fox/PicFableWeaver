@@ -79,6 +79,9 @@ class ImageCaptionNode(Node):
         image_info_list = []
         for item in image_descriptions:
             lens, composition, visual_style = analyze_image_structure(item['image_desc'])
+            if lens and composition and visual_style:
+                logger.info(f"图片描述结构：{lens}\n，{composition}\n，{visual_style}")
+
             image_id = image_db.process_and_store_image(item['image_path'], item['image_name'], item['image_desc'],
                                                         lens=lens,
                                                         composition=composition, visual_style=visual_style)

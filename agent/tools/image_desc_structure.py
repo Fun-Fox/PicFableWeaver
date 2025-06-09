@@ -1,8 +1,9 @@
 from agent.utils.call_llm import call_local_llm
 import yaml
+from loguru import logger
 
 
-def analyze_image_structure(image_description: str) -> str:
+def analyze_image_structure(image_description: str):
     """
     分析图片描述，将其分成镜头、构图、视觉风格三部分。
 
@@ -43,14 +44,19 @@ visual_style: |
         try:
             # 尝试将结果解析为 YAML 格式
             yaml_str = result.split("```yaml")[1].split("```")[0].strip()
+            logger.info(f"分析结果: {yaml_str}")
             analysis = yaml.safe_load(yaml_str)
+
             if isinstance(analysis,
                           dict) and 'lens' in analysis and 'composition' in analysis and 'visual_style' in analysis:
                 return analysis['lens'], analysis['composition'], analysis['visual_style']
             else:
                 # 如果解析失败或格式不正确，返回错误信息
-                return "错误: LLM 返回的结果格式不正确。"
+                logger.error(f"错误: LLM 返回的结果格式不正确。")
+                return None, None, None
         except yaml.YAMLError:
-            return "错误: LLM 返回的结果格式不正确。"
+            logger.error(f"错误: LLM 返回的结果格式不正确。")
+            return None, None, None
     else:
-        return "无法生成分析结果，请稍后再试。"
+        logger.error(f"无法生成分析结果，请稍后再试。")
+        return None, None, None
