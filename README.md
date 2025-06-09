@@ -60,7 +60,7 @@ pip install -r requirements.txt
 
 # 下载LLaVA模型
 set HF_ENDPOINT=https://hf-mirror.com
-huggingface-cli download fancyfeast/llama-joycaption-beta-one-hf-llava --repo-type=model --local-dir ./llava_model/
+huggingface-cli download fancyfeast/llama-joycaption-beta-one-hf-llava --repo-type=model --local-dir ./fancyfeast/llama-joycaption-beta-one-hf-llava
 
 # 安装PyTorch
 pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu128
