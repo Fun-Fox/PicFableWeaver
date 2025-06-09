@@ -104,7 +104,7 @@ class ImageDescStructNode(Node):
             item['lens'] = lens
             item['composition'] = composition
             item['visual_style'] = visual_style
-            logger.info(f"图片描述结构：{lens}\n，{composition}\n，{visual_style}")
+            logger.info(f"镜头：{lens}\n 图片结构：{composition}\n 视觉风格：{visual_style}")
         return image_info_list
 
     def post(self, shared, prep_res, exec_res):
