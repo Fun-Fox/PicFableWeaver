@@ -5,8 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="153aec6d-2f38-457f-b038-d60f7ce42a5f" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/workflows/HY图生视频.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/mappings/hy_image_to_video_api.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/mcp_client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/workflows/hy_image_to_video_api.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/remote_comfyui_mcp_server/client.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/remote_comfyui_mcp_server/comfyui_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/comfyui_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/remote_comfyui_mcp_server/comfyui_workflow_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/remote_comfyui_mcp_server/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/remote_comfyui_mcp_server/workflows/HY图生视频.json" beforeDir="false" afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/workflows/hy_image_to_video.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/remote_comfyui_mcp_server/workflows/basic.json" beforeDir="false" afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/workflows/basic.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/remote_comfyui_mcp_server/workflows/basic_api_test.json" beforeDir="false" afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/workflows/basic_api.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,10 +45,13 @@
   "keyToString": {
     "Python.app.executor": "Run",
     "Python.caption.executor": "Run",
+    "Python.client.executor": "Run",
     "Python.image_caption.executor": "Run",
     "Python.image_caption_flow.executor": "Run",
     "Python.image_caption_tools (1).executor": "Run",
+    "Python.mcp_client.executor": "Run",
     "Python.mcp_tools.executor": "Run",
+    "Python.server.executor": "Run",
     "Python.start (1).executor": "Run",
     "Python.test (1).executor": "Run",
     "Python.test_mcp_server (1).executor": "Run",
@@ -47,49 +60,27 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/PycharmProjects/PicFableWeaver/remote_mcp_server",
+    "last_opened_file_path": "D:/PycharmProjects/PicFableWeaver/remote_comfyui_mcp_server/mappings",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\PycharmProjects\PicFableWeaver\remote_comfyui_mcp_server\mappings" />
       <recent name="D:\PycharmProjects\PicFableWeaver\remote_mcp_server" />
       <recent name="D:\PycharmProjects\PicFableWeaver\image_caption_agent\mcp_server" />
       <recent name="D:\PycharmProjects\PicFableWeaver\example" />
       <recent name="D:\PycharmProjects\PicFableWeaver\image_caption_agent" />
-      <recent name="D:\PycharmProjects\PicFableWeaver" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\PycharmProjects\PicFableWeaver\remote_comfyui_mcp_server\workflows" />
       <recent name="D:\PycharmProjects\PicFableWeaver\remote_comfyui_mcp_server" />
+      <recent name="D:\PycharmProjects\PicFableWeaver\remote_comfyui_mcp_server\workflows" />
       <recent name="D:\PycharmProjects\PicFableWeaver\db" />
       <recent name="D:\PycharmProjects\PicFableWeaver\agent" />
       <recent name="D:\PycharmProjects\PicFableWeaver\agent\mcp_client" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.image_caption_flow">
-    <configuration name="client_tools" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PicFableWeaver" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/image_caption_agent/mcp_client/utils" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="D:\PycharmProjects\PicFableWeaver\image_caption_agent\mcp_client\utils\client_tools.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.mcp_client_test">
     <configuration name="image_caption_flow" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PicFableWeaver" />
       <option name="ENV_FILES" value="" />
@@ -112,7 +103,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="mcp_tools" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="mcp_client_test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PicFableWeaver" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -121,11 +112,33 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/image_caption_agent/mcp_server" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/remote_comfyui_mcp_server" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="D:\PycharmProjects\PicFableWeaver\image_caption_agent\mcp_server\mcp_tools.py" />
+      <option name="SCRIPT_NAME" value="D:\PycharmProjects\PicFableWeaver\remote_comfyui_mcp_server\mcp_client_test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="server" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PicFableWeaver" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/remote_comfyui_mcp_server" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/remote_comfyui_mcp_server/server.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -156,28 +169,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="start" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PicFableWeaver" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/remote_mcp_server" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="D:\PycharmProjects\PicFableWeaver\remote_mcp_server\start.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="test (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PicFableWeaver" />
       <option name="ENV_FILES" value="" />
@@ -200,57 +191,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PicFableWeaver" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="D:\PycharmProjects\PicFableWeaver\image_caption_agent\mcp_server\test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="test_mcp_server" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PicFableWeaver" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/image_caption_agent/test" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="D:\PycharmProjects\PicFableWeaver\test_mcp_server.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.mcp_client_test" />
+        <item itemvalue="Python.server" />
         <item itemvalue="Python.start (1)" />
         <item itemvalue="Python.image_caption_flow" />
         <item itemvalue="Python.test (1)" />
-        <item itemvalue="Python.start" />
-        <item itemvalue="Python.client_tools" />
       </list>
     </recent_temporary>
   </component>
@@ -294,5 +241,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/remote_comfyui_mcp_server/comfyui_client.py</url>
+          <line>88</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

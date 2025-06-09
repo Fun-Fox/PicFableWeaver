@@ -1,0 +1,6 @@
+{
+  "prompt": ["6","text"],
+  "width": ["5","width"],
+  "height": ["5","height"],
+  "model": ["4","ckpt_name"]
+}

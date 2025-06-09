@@ -6,3 +6,8 @@ pocketflow>=0.0.1
 loguru>=0.7.3
 #liger_kernel
 python-dotenv>=0.21.0
+requests~=2.32.3
+transformers~=4.51.3
+torch~=2.8.0.dev20250603+cu128
+websockets~=15.0.1
+mcp~=1.9.2

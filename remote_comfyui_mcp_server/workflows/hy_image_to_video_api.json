@@ -1,0 +1,272 @@
+{
+  "12": {
+    "inputs": {
+      "vae_name": "hunyuan_video_vae_bf16.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "加载VAE"
+    }
+  },
+  "13": {
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "llava_llama3_fp8_scaled.safetensors",
+      "type": "hunyuan_video",
+      "device": "default"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "双CLIP加载器"
+    }
+  },
+  "15": {
+    "inputs": {
+      "conditioning": [
+        "47",
+        0
+      ]
+    },
+    "class_type": "ConditioningZeroOut",
+    "_meta": {
+      "title": "条件零化"
+    }
+  },
+  "17": {
+    "inputs": {
+      "crop": "center",
+      "clip_vision": [
+        "18",
+        0
+      ],
+      "image": [
+        "48",
+        0
+      ]
+    },
+    "class_type": "CLIPVisionEncode",
+    "_meta": {
+      "title": "CLIP视觉编码"
+    }
+  },
+  "18": {
+    "inputs": {
+      "clip_name": "sigclip_vision_patch14_384.safetensors"
+    },
+    "class_type": "CLIPVisionLoader",
+    "_meta": {
+      "title": "加载CLIP视觉"
+    }
+  },
+  "20": {
+    "inputs": {
+      "pixels": [
+        "48",
+        0
+      ],
+      "vae": [
+        "12",
+        0
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE编码"
+    }
+  },
+  "23": {
+    "inputs": {
+      "frame_rate": 30,
+      "loop_count": 0,
+      "filename_prefix": "FramePack",
+      "format": "video/h264-mp4",
+      "pix_fmt": "yuv420p",
+      "crf": 19,
+      "save_metadata": true,
+      "trim_to_audio": false,
+      "pingpong": false,
+      "save_output": false,
+      "images": [
+        "44",
+        0
+      ]
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "Video Combine 🎥🅥🅗🅢"
+    }
+  },
+  "27": {
+    "inputs": {
+      "backend": "inductor",
+      "fullgraph": false,
+      "mode": "default",
+      "dynamic": false,
+      "dynamo_cache_size_limit": 64,
+      "compile_single_blocks": true,
+      "compile_double_blocks": true
+    },
+    "class_type": "FramePackTorchCompileSettings",
+    "_meta": {
+      "title": "Torch Compile Settings"
+    }
+  },
+  "33": {
+    "inputs": {
+      "tile_size": 256,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8,
+      "samples": [
+        "39",
+        0
+      ],
+      "vae": [
+        "12",
+        0
+      ]
+    },
+    "class_type": "VAEDecodeTiled",
+    "_meta": {
+      "title": "VAE解码（分块）"
+    }
+  },
+  "39": {
+    "inputs": {
+      "steps": 30,
+      "use_teacache": true,
+      "teacache_rel_l1_thresh": 0.15,
+      "cfg": 1,
+      "guidance_scale": 10,
+      "shift": 0,
+      "seed": 47,
+      "latent_window_size": 9,
+      "total_second_length": 5,
+      "gpu_memory_preservation": 6,
+      "sampler": "unipc_bh1",
+      "embed_interpolation": "weighted_average",
+      "start_embed_strength": 0.5,
+      "denoise_strength": 1,
+      "model": [
+        "52",
+        0
+      ],
+      "positive": [
+        "47",
+        0
+      ],
+      "negative": [
+        "15",
+        0
+      ],
+      "start_latent": [
+        "20",
+        0
+      ],
+      "image_embeds": [
+        "17",
+        0
+      ]
+    },
+    "class_type": "FramePackSampler",
+    "_meta": {
+      "title": "FramePackSampler"
+    }
+  },
+  "44": {
+    "inputs": {
+      "image": [
+        "33",
+        0
+      ]
+    },
+    "class_type": "GetImageSizeAndCount",
+    "_meta": {
+      "title": "Get Image Size & Count"
+    }
+  },
+  "47": {
+    "inputs": {
+      "text": "CGI animation, mecha Pikachu (yellow head, red/black ears, blocky white/blue/red/yellow body), extreme mid-shot, eye-level perspective, firing flames with debris explosion, dust particles, skyscrapers with motion blur, vivid top lighting, happy expression with tongue out, blurred human heads in lower-left foreground, cinematic contrast between robot and sci-fi urban backdrop, 8K resolution, Unreal Engine 5.3 rendering",
+      "clip": [
+        "13",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码"
+    }
+  },
+  "48": {
+    "inputs": {
+      "image": [
+        "50",
+        0
+      ]
+    },
+    "class_type": "GetImageSizeAndCount",
+    "_meta": {
+      "title": "Get Image Size & Count"
+    }
+  },
+  "50": {
+    "inputs": {
+      "width": [
+        "51",
+        0
+      ],
+      "height": [
+        "51",
+        1
+      ],
+      "interpolation": "lanczos",
+      "method": "stretch",
+      "condition": "always",
+      "multiple_of": 0,
+      "image": [
+        "58",
+        0
+      ]
+    },
+    "class_type": "ImageResize+",
+    "_meta": {
+      "title": "🔧 Image Resize"
+    }
+  },
+  "51": {
+    "inputs": {
+      "base_resolution": 640,
+      "image": [
+        "58",
+        0
+      ]
+    },
+    "class_type": "FramePackFindNearestBucket",
+    "_meta": {
+      "title": "Find Nearest Bucket"
+    }
+  },
+  "52": {
+    "inputs": {
+      "model": "FramePackI2V_HY_fp8_e4m3fn.safetensors",
+      "base_precision": "bf16",
+      "quantization": "fp8_e4m3fn",
+      "load_device": "offload_device",
+      "attention_mode": "sdpa"
+    },
+    "class_type": "LoadFramePackModel",
+    "_meta": {
+      "title": "Load FramePackModel"
+    }
+  },
+  "58": {
+    "inputs": {
+      "image": "26f43b3a76165d91122e037c5b89b48.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "加载图像"
+    }
+  }
+}
