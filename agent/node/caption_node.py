@@ -17,19 +17,21 @@ def extract_sections(text):
 
     # 初始化变量存储结果
     user_content = ""
-    system_content = ""
     assistant_content = ""
+    result_content = ""
 
     # 提取 user 和 system 内容
     for part in parts:
         if "user" in part:
             user_content = part.replace("user", "").strip()
-        elif "system" in part:
-            system_content = part.replace("system", "").strip()
         elif "assistant" in part:
             assistant_content = part.replace("assistant", "").strip()
-
-    return user_content, system_content, assistant_content
+        else:
+            result_content = part.replace("", "").strip()
+    logger.info(f"用户内容：{user_content}")
+    logger.info(f"助手内容：{assistant_content}")
+    logger.info(f"结果内容：{result_content}")
+    return user_content, assistant_content, result_content
 
 
 class ImageCaptionNode(Node):
@@ -56,7 +58,6 @@ class ImageCaptionNode(Node):
             _, _, image_desc = extract_sections(result)
             image_path = item['image_path']
             file_name = os.path.basename(image_path)
-            logger.info(f"第{idx}张图，图片文件名称：{file_name}，\n 图片描述：{image_desc}")
             sleep(10)
             image_descriptions.append({
                 'image_path': image_path,
