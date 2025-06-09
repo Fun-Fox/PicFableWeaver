@@ -40,10 +40,59 @@ def get_script_details(script_id):
     script_data = db_manager.get_script_by_script_id(script_id)
     if not script_data:
         return "未找到对应的剧本信息！"
-    scenes = "\n".join(
-        [f"Scene {scene['scene_number']}: {scene['narration_subtitle']}" for scene in script_data["scenes"]])
-    return gr.Textbox(label="剧本详细信息",
-                      value=f"剧本主题: {script_data['story_theme']}\n分镜信息:\n{scenes}")
+
+    # 剧本基础信息（文本展示）
+    base_info = f"""
+    **剧本主题**: 
+    
+    {script_data['story_theme']}
+    
+    **剧情概要**: 
+    
+    {script_data['plot_summary']}
+    
+    **关键情节**: 
+    
+    {script_data['key_plot_points']}
+    
+    **情感基调**: 
+    
+    {script_data['emotional_tone']}
+    
+    **背景音乐提示**: 
+    
+    {script_data['background_music_prompt']}
+    
+    ---
+    """
+
+    # 分镜信息（表格展示）
+    scenes = script_data["scenes"]
+    table_data = [
+        [
+            scene["scene_number"],
+            scene["image_id"],
+            scene["camera_movement"],
+            scene["subject_action"],
+            scene["transition_effect"],
+            scene["image_to_video_prompt"],
+            scene["narration_subtitle"]
+        ]
+        for scene in scenes
+    ]
+    df_table_data = pd.DataFrame(table_data, columns=[
+        "分镜编号", "图片ID", "镜头运动", "主体动作", "转场效果", "图生视频提示", "旁白字幕"
+    ])
+
+    return [
+        gr.Markdown(value=base_info, label="主题"),
+        gr.Dataframe(
+            label="分镜",
+            value=df_table_data,
+            wrap=True,
+            column_widths=[1, 1, 2, 2, 2, 4, 3]
+        )
+    ]
 
 
 # 创建 Gradio Web UI
@@ -72,11 +121,15 @@ with gr.Blocks() as demo:
                 "图片存储位置": [info['image_name'] for info in image_info]
             })
 
+
         image_info_output = gr.Dataframe(
             headers=["ID", "图片描述", "图片存储位置"],
             value=update_image_info(),
-            label="已完成返回的图片信息展示"
+            label="已完成返回的图片信息展示",
+            column_widths=[1, 20, 5],
+            wrap=True
         )
+
 
         # 优化：动态更新CheckboxGroup的choices
         def get_image_id_list():
@@ -101,7 +154,10 @@ with gr.Blocks() as demo:
 
 
         script_dropdown = gr.Dropdown(choices=[''] + get_script_dropdown(), label="选择剧本 ID")
-        script_details_output = gr.Textbox(label="剧本详细信息")
+        script_details_output = [
+            gr.Markdown(label="剧本"),
+            gr.Dataframe(label="分镜详情")
+        ]
 
         script_dropdown.change(get_script_details, inputs=script_dropdown, outputs=script_details_output)
 
