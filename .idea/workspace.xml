@@ -69,7 +69,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.demo">
-    <configuration name="comfyui_server" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="comfyui_mcp_start" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PicFableWeaver" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -82,7 +82,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="D:\PycharmProjects\PicFableWeaver\remote_comfyui_mcp_server\comfyui_server.py" />
+      <option name="SCRIPT_NAME" value="D:\PycharmProjects\PicFableWeaver\remote_comfyui_mcp_server\comfyui_mcp_start.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -183,7 +183,7 @@
       <list>
         <item itemvalue="Python.demo" />
         <item itemvalue="Python.mcp_client_test" />
-        <item itemvalue="Python.comfyui_server" />
+        <item itemvalue="Python.comfyui_mcp_start" />
         <item itemvalue="Python.start (1)" />
         <item itemvalue="Python.image_caption_flow" />
       </list>
