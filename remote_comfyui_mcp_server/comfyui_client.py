@@ -150,7 +150,7 @@ class ComfyUIClient:
             with open(workflow_file, "r", encoding="utf-8", errors="ignore") as f:
                 workflow = json.load(f)
             logger.info(f"使用工作流 {workflow_id} 生成视频...")
-            logger.info(f"workflow_id:\n{json.dumps(workflow, indent=2, ensure_ascii=False)}")
+            # logger.info(f"workflow_id:\n{json.dumps(workflow, indent=2, ensure_ascii=False)}")
             # 上传图像
             uploaded_filename = self.upload_image(image_path)
             logger.info(f"上传的图像文件名: {uploaded_filename}")
