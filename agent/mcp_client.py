@@ -15,31 +15,31 @@ client = Client(config)
 
 
 def mcp_get_tools():
-    """Get available tools from an MCP server.
+    """从MCP服务器获取可用工具。
     """
 
     async def _get_tools():
         async with client:
-            logger.info(f"Client connected: {client.is_connected()}")
-            # Make MCP calls within the context
+            logger.info(f"客户端已连接: {client.is_connected()}")
+            # 在上下文中调用MCP方法
             tools = await client.list_tools()
-            logger.info(f"Available tools: {tools}")
+            logger.info(f"可用工具: {tools}")
             return tools
 
     return asyncio.run(_get_tools())
 
 
 def mcp_call_tool(tool_name=None, arguments=None):
-    """Call a tool on an MCP server.
+    """调用MCP服务器上的工具。
     """
 
     async def _call_tool():
         async with client:
-            logger.info(f"Client connected: {client.is_connected()}")
+            logger.info(f"客户端已连接: {client.is_connected()}")
             # tools = await client.list_tools()
             # if any(tool.name == tool_name for tool in tools):
             result = await client.call_tool(name=tool_name, arguments=arguments)
-            print(f"Greet result: {result}")
+            print(f"调用结果: {result}")
             return result
 
     return asyncio.run(_call_tool())
