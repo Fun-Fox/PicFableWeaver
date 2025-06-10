@@ -13,8 +13,9 @@ class BatchI2VideoAndAudio(Node):
 
     def prep(self, shared):
         script_id = shared["script_id"]
+        db_path = shared["db_path"]
 
-        db = DatabaseManager()
+        db = DatabaseManager(db_path= db_path)
         db.connect()
         image_db = ImageDBManager(db)
 
