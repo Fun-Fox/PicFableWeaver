@@ -6,13 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="153aec6d-2f38-457f-b038-d60f7ce42a5f" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agent/mcp_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/mcp_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/.$系统设计.drawio.bkp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/0.png" beforeDir="false" afterPath="$PROJECT_DIR$/example/doc/0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/example/doc/1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/example/doc/2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/test.md" beforeDir="false" afterPath="$PROJECT_DIR$/example/doc/test.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/系统设计.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/example/doc/系统设计.drawio" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/node/caption_node.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/node/caption_node.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/remote_caption_mcp_server/caption_mcp_start.py" beforeDir="false" afterPath="$PROJECT_DIR$/remote_caption_mcp_server/caption_mcp_start.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

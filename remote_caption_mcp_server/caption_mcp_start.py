@@ -9,7 +9,7 @@ mcp = FastMCP("caption")
 
 # 使用单例模式加载模型
 
-model = FancyFeastModel()
+
 
 
 # 定义生成图像描述的工具函数
@@ -23,7 +23,7 @@ def generate_image_caption(image_base64: str) -> str:
     """
     # 将Base64字符串解码为图像数据
     image = decode_base64_to_image(image_base64)
-
+    model = FancyFeastModel()
     caption_type = "描述性"
     extra_options = [
         "包含有关照明的信息",

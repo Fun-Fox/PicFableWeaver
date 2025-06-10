@@ -75,7 +75,7 @@ class ImageCaptionNode(Node):
             _, _, image_desc = extract_sections(result)
 
             file_name = os.path.basename(image_path)
-            sleep(10)
+            # sleep(10)
             image_descriptions.append({
                 'image_path': image_path,
                 "image_name": file_name,
