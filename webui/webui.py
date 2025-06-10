@@ -19,12 +19,15 @@ def run_caption_flow(image_dir):
     return "Caption Flow 执行完成！"
 
 
+def run_i2v_flow(selected_ids):
+    """运行 weaver_flow 并返回结果"""
+    i2v_flow(script_id=selected_ids, db_path=db_path)
+    return f"i2v_flow执行完成！选择的剧本 ID: {selected_ids}"
+
 def run_weaver_flow(selected_ids):
     """运行 weaver_flow 并返回结果"""
     weaver_flow(image_id_list=selected_ids, db_path=db_path)
     return f"Weaver Flow 执行完成！选择的图片 ID: {selected_ids}"
-
-
 def get_all_image_info():
     """获取所有图片信息"""
     image_info = db_manager.get_all_image_info()
@@ -171,7 +174,7 @@ with gr.Blocks() as demo:
 
         # 按钮点击事件
         generate_video_button.click(
-            fn=i2v_flow,
+            fn=run_i2v_flow,
             inputs=script_dropdown,
             outputs=video_result_output
         )

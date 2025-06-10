@@ -22,7 +22,7 @@ def weaver_flow(image_id_list, db_path):
 
 
 
-def i2v_flow(script_id):
+def i2v_flow(script_id,db_path):
     # Create nodes
     batch_i2video = BatchI2VideoAndAudio()
     end = NoOp()
@@ -30,5 +30,5 @@ def i2v_flow(script_id):
     batch_i2video - "finish" >> end
     # Create and run flow
     flow = Flow(start=batch_i2video)
-    shared = {"script_id": script_id,}
+    shared = {"script_id": script_id,"db_path": db_path}
     flow.run(shared)
