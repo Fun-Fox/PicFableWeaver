@@ -11,10 +11,9 @@ model = FancyFeastModel()
 
 # 定义生成图像描述的工具函数
 @mcp.tool()
-def generate_image_caption(image_base64: str) -> str:
+async def generate_image_caption(image_base64: str) -> str:
     """
     根据输入的Base64格式图像生成描述性文本或提示词。
-
     :param image_base64: Base64编码的图像数据
     :return: 生成的标题文本
     """
@@ -57,7 +56,7 @@ def generate_image_caption(image_base64: str) -> str:
     # 生成输出
     logger.info("开始生成输出")
     outputs = model.get_model().generate(**inputs, max_new_tokens=512, do_sample=True, temperature=0.6,
-                                                   top_p=0.9, use_cache=True, top_k=None)
+                                                   top_p=0.9, use_cache=False, top_k=None)
     caption = model.get_processor().decode(outputs[0], skip_special_tokens=True)
 
     return caption

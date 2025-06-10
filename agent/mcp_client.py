@@ -37,22 +37,23 @@ def mcp_get_tools():
     return asyncio.run(_get_tools())
 
 
-def mcp_call_tool(tool_name=None, arguments=None):
-    """调用MCP服务器上的工具。
-    """
-
-    async def _call_tool():
+async def mcp_call_tool(tool_name=None, arguments=None):
+    try:
         async with client:
             logger.info(f"客户端已连接: {client.is_connected()}")
-            # tools = await client.list_tools()
-            # if any(tool.name == tool_name for tool in tools):
-            result = await client.call_tool(name=tool_name, arguments=arguments)
-            # result_text = result[0].text if isinstance(result, list) and len(result) > 0 else ""
-            # print("调用结果文本内容：")
-            # print(result_text)
-            return result[0].text
-
-    return asyncio.run(_call_tool())
+            tools = await client.list_tools()
+            if any(tool.name == tool_name for tool in tools):
+                print(f"调用工具: {tool_name}")
+                result = await client.call_tool(name=tool_name, arguments=arguments)
+                if result:
+                    content = result[0].text
+                    logger.info("调用结果文本内容：{}", content)
+                    return content
+                logger.warning("MCP 工具调用返回空结果")
+                return ""
+    except Exception as e:
+        logger.error(f"MCP 调用失败: {e}", exc_info=True)
+        raise
 
 
 async def comfyui_mcp_server(payload):

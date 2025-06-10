@@ -1,3 +1,4 @@
+import asyncio
 import os.path
 import time
 from time import sleep
@@ -71,11 +72,11 @@ class ImageCaptionNode(Node):
             else:
                 logger.info(f"`{image_path}` 不存在于数据库中。")
 
-            result = mcp_call_tool(tool_name, parameters)
+            result = asyncio.run(mcp_call_tool(tool_name, parameters))
             _, _, image_desc = extract_sections(result)
 
             file_name = os.path.basename(image_path)
-            # sleep(10)
+            sleep(30)
             image_descriptions.append({
                 'image_path': image_path,
                 "image_name": file_name,
