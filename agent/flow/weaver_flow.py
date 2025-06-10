@@ -1,6 +1,6 @@
 from pocketflow import Node, Flow
 
-from agent.node.batch_node import BatchI2Video
+from agent.node.batch_node import BatchI2VideoAndAudio
 from agent.node.weaver_node import PicWeaverNode
 
 
@@ -24,7 +24,7 @@ def weaver_flow(image_id_list, db_path):
 
 def i2v_flow(script_id):
     # Create nodes
-    batch_i2video = BatchI2Video()
+    batch_i2video = BatchI2VideoAndAudio()
     end = NoOp()
     # Connect nodes
     batch_i2video - "finish" >> end

@@ -39,14 +39,14 @@ mcp = FastMCP("ComfyUI_MCP_Server", lifespan=app_lifespan)
 
 # 定义图像生成工具
 @mcp.tool()
-def generate_image(params: str) -> dict:
+def generate_audio(params: str) -> dict:
     """使用ComfyUI生成图像"""
     logger.info(f"收到请求参数: {params}")
     try:
         param_dict = json.loads(params)
         tags = param_dict["tags"]
-        workflow_id = param_dict.get("workflow_id", "audio_ace_step_api")
         lyrics = param_dict.get("lyrics", None)
+        workflow_id = param_dict.get("workflow_id", "audio_ace_step_api")
 
         # 使用全局comfyui_client（因为mcp.context不可用）
         image_url = asyncio.run(comfyui_client.generate_audio(
@@ -124,6 +124,9 @@ async def handle_websocket(websocket):
                 await websocket.send(json.dumps(result))
             elif request.get("tool") == "generate_image_to_video":
                 result = generate_image_to_video(request.get("params", ""))
+                await websocket.send(json.dumps(result))
+            elif request.get("tool") == "generate_audio":
+                result = generate_audio(request.get("params", ""))
                 await websocket.send(json.dumps(result))
             else:
                 await websocket.send(json.dumps({"error": "未知工具"}))

@@ -9,7 +9,7 @@ from database.db_manager import DatabaseManager
 from database.image_manager import ImageDBManager
 
 
-class BatchI2Video(Node):
+class BatchI2VideoAndAudio(Node):
 
     def prep(self, shared):
         script_id = shared["script_id"]
@@ -44,7 +44,20 @@ class BatchI2Video(Node):
 
     def exec(self, input):
         result, background_music_prompt = input
-        workflow_id = "hy_image_to_video_api"
+        audio_workflow_id  = "audio_ace_step_api"
+
+        payload = {
+            "tool": "generate_image_to_video",
+            "params": json.dumps({
+                "tags": tags,
+                "image_path": lyrics,
+                "workflow_id": audio_workflow_id
+            })
+        }
+        asyncio.run(comfyui_mcp_server(payload))
+
+        i2v_workflow_id = "hy_image_to_video_api"
+
         for ret in result:
             image_path = ret["image_path"]
             prompt = ret["video_prompt"]
@@ -53,7 +66,7 @@ class BatchI2Video(Node):
                 "params": json.dumps({
                     "prompt": prompt,
                     "image_path": image_path,
-                    "workflow_id": workflow_id
+                    "workflow_id": i2v_workflow_id
                 })
             }
             asyncio.run(comfyui_mcp_server(payload))

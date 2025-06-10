@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="153aec6d-2f38-457f-b038-d60f7ce42a5f" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/mappings/audio_ace_step_api.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/workflows/audio_ace_step.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/workflows/audio_ace_step_api.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/flow/weaver_flow.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/flow/weaver_flow.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/agent/node/batch_node.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/node/batch_node.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/系统设计.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/example/系统设计.drawio" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/remote_comfyui_mcp_server/comfyui_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/comfyui_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/node/weaver_node.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/node/weaver_node.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/remote_comfyui_mcp_server/comfyui_mcp_start.py" beforeDir="false" afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/comfyui_mcp_start.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

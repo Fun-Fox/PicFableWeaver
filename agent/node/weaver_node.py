@@ -35,6 +35,18 @@ class PicWeaverNode(Node):
 4. 输出格式为严格的YAML格式，使用|符号表示多行字段，缩进为4个空格。
 5. 不得出现冒号: 或Markdown语法。
 
+## 文生背景音乐提示词要求
+请根据剧本内容，额外生成一段用于 AI 音乐生成器的提示词
+说明：
+- tags 是必须字段，应体现情绪、节奏、乐器等特征。
+    如：
+    epic, orchestral, dramatic, 80s synth
+- lyrics 可为空，若提供则需押韵并贴合画面氛围。(歌词(lyrics)结构：[verse][chorus][bridge][outro])
+    如：
+    [verse] 
+    In the shadow of the stars,
+    We dream beyond the scars.
+
 ## 输出格式
 
 ```yaml
@@ -46,9 +58,11 @@ key_plot_points: |
     <关键转折点>
 emotional_tone: |
     <情感基调>
-background_music_prompt: | 
-    <AI生背景音乐的推荐提示词>
-
+tags: | 
+    <文生背景音乐提示词：风格标签>
+lyrics: |
+    <文生背景音乐提示词：适配该场景的歌词内容（可选）>
+    
 scenes:
   - scene_number: Scene 1
     image_id: <图片ID>
