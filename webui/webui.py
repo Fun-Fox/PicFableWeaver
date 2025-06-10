@@ -10,7 +10,8 @@ from database.db_manager import DatabaseManager
 db_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'db/image_database.db')
 db_manager = DatabaseManager(db_path)
 db_manager.connect()  # 确保连接已建立
-
+db_manager.create_script_table()  # 创建或确保剧本表存在
+db_manager.create_image_info_table()
 
 def run_caption_flow(image_dir):
     """运行 caption_flow 并返回结果"""

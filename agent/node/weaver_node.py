@@ -110,7 +110,7 @@ scenes:
             db_path = shared.get("db_path")
             db = DatabaseManager(db_path=db_path)
             db.connect()
-            db.create_script_table()  # 创建或确保剧本表存在
+
 
             # 使用 datetime 模块生成可读性强的时间字符串
             now = datetime.now()

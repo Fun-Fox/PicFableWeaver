@@ -25,9 +25,18 @@ class DatabaseManager:
         return self.local.conn
 
     def close(self):
-        """关闭数据库连接"""
-        if self.conn and not self.conn.closed:
-            self.conn.close()
+        """安全地关闭数据库连接"""
+        if self.conn is not None:
+            try:
+                # 尝试执行一个简单查询，如果连接已关闭会抛出异常
+                self.conn.cursor()
+                self.conn.close()
+            except sqlite3.ProgrammingError:
+                # 已经关闭了，无需再处理
+                pass
+            finally:
+                self.conn = None
+                self.cursor = None
 
     def create_image_info_table(self):
         """创建图片信息表"""
@@ -173,7 +182,7 @@ class DatabaseManager:
                     tags,lyrics, scene_number, image_id,
                     camera_movement, subject_action, transition_effect,
                     image_to_video_prompt, narration_subtitle, script_id
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)
             ''', (
                 story_theme, plot_summary, key_plot_points, emotional_tone,
                 tags,lyrics, scene_number, image_id,
