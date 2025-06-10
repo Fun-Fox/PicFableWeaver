@@ -35,7 +35,7 @@ class BatchI2VideoAndAudio(Node):
             # 获取图片路径
             image_info = image_db.get_processed_image_by_id(image_id)
             image_path = image_info[2] if image_info else None
-            print(image_path)
+            # print(image_path)
 
             result.append({
                 "image_id": image_id,

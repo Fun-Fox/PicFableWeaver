@@ -37,4 +37,4 @@ if __name__ == "__main__":
     #     "你的回答将被用于文本到图像模型，因此避免使用无用的元短语，如“这张图片显示...”，“你正在看...”等。",
     # ]
     caption = generate_image_caption(image)
-    print(caption)
+    # print(caption)
