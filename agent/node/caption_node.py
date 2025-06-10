@@ -42,10 +42,11 @@ class ImageCaptionNode(Node):
 
     def prep(self, shared):
         """Prepare tool execution parameters"""
-        return shared["image_dir"]
+        return shared["image_dir"],shared["db_path"]
 
-    def exec(self, image_dir):
+    def exec(self, input):
         """Execute the chosen tool"""
+        image_dir,db_path=input
         logger.info(f"开始执行图片描述任务")
         image_paths = batch_read_images(image_dir)
         logger.info(f"图片数量：{len(image_paths)}")
@@ -54,7 +55,7 @@ class ImageCaptionNode(Node):
 
         tool_name = "generate_image_caption"
         image_descriptions = []
-        db_manager = DatabaseManager()
+        db_manager = DatabaseManager(db_path=db_path)
         db_manager.connect()
         for idx, item in enumerate(image_base64_list):
             parameters = {
@@ -133,7 +134,7 @@ class ImageDescStructNode(Node):
         db.connect()
         image_db = ImageDBManager(db)
         for item in image_info_list:
-            image_db.update_processed_image(item['image_id'], item['image_path'], item['image_name'],
+            image_db.update_processed_image(item['image_id'], item['image_name'],item['image_path'],
                                             item['image_desc'],
                                             lens=item['lens'],
                                             composition=item['composition'],
