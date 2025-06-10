@@ -39,13 +39,17 @@ class PicWeaverNode(Node):
 请根据剧本内容，额外生成一段用于 AI 音乐生成器的提示词
 说明：
 - tags 是必须字段，应体现情绪、节奏、乐器等特征。
-    如：
-    epic, orchestral, dramatic, 80s synth
-- lyrics 可为空，若提供则需押韵并贴合画面氛围。(歌词(lyrics)结构：[verse][chorus][bridge][outro])
-    如：
-    [verse] 
-    In the shadow of the stars,
-    We dream beyond the scars.
+
+可选的tags有可选的Tags有：electronic, rock, pop, funk, soul, melodic, surf music, DUBSTEP, OBSCURE, DARKNESS, FEAR, TERROR, cyberpunk, Acid jazz, electro, em, soft electric drums, dark, death rock, metal, hardcore, electric guitar, powerful, bass, drums, Cuban music, salsa, son, Afro-Cuban, traditional Cuban, country rock, folk rock, southern rock, bluegrass, aggressive, Heavy Riffs, Blast Beats, Satanic Black Metal, Galaxy, space, electric guitar, cosmic tides, Galactic dreams, Neon lights, Industrial Techno,    Gothic Rave, city rock, folk rock, southern rock, bluegrass, country rock, folk rock, mandolin, pop, Aggressive, Heavy Riffs, Blast Beats, Satanic Black Metal, Jazz, Electro, 808 bass, smooth flow, party atmosphere, theme, sub bassline, mandarin hip hop, smooth, bassline, fast, hip hop, rap, yachtrck, female singer, catchy, lounge, funny, uplifting, emotive soundscape, dramatic female vocals, sad, traditional)
+如：
+funk, pop, soul, rock, melodic, guitar, drums, bass, keyboard
+- lyrics 可为空，若提供则需押韵并贴合画面氛围。
+歌词(lyrics)结构：[verse][chorus][bridge][outro]
+如：
+[verse] 
+哎呀跳起来，脚尖踩节拍 (oo-yeah!)\n灯光闪烁像星星盛开 (uh-huh!)
+[chorus]
+嘿，你还等啥？快抓住节拍 (come on!)\n光芒指引，让心都不存在 (whoa!)\n
 
 ## 输出格式
 

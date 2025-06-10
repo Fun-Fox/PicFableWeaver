@@ -131,7 +131,8 @@ class DatabaseManager:
                    plot_summary TEXT,
                    key_plot_points TEXT,
                    emotional_tone TEXT,
-                   background_music_prompt TEXT,
+                   tags TEXT,
+                   tags TEXT,
 
                    scene_number TEXT,
                    image_id INTEGER,
