@@ -56,7 +56,7 @@ async def mcp_call_tool(tool_name=None, arguments=None):
         raise
 
 async def fancy_feast_mcp_server(payload):
-    uri = os.getenv("CAPTION_MCP_SERVER_URL")
+    uri = os.getenv("FAMCY_MS_MCP_SERVER_URL")
     try:
         async with websockets.connect(uri) as ws:
             print("已连接到MCP服务器")
@@ -70,7 +70,7 @@ async def fancy_feast_mcp_server(payload):
 
 
 async def comfyui_mcp_server(payload):
-    uri = os.getenv("COMFYUI_MCP_SERVER_URL")
+    uri = os.getenv("COMFYUI_MS_MCP_SERVER_URL")
     try:
         async with websockets.connect(uri) as ws:
             print("已连接到MCP服务器")

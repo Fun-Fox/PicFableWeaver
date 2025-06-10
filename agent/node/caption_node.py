@@ -55,15 +55,15 @@ class ImageCaptionNode(Node):
 
         image_base64_list = batch_convert_to_base64(image_paths)
 
-        tool_name = "generate_image_caption"
+        # tool_name = "generate_image_caption"
         db_manager = DatabaseManager(db_path=db_path)
         db_manager.connect()
         image_db = ImageDBManager(db_manager)
         image_info_list = []
         for idx, item in enumerate(image_base64_list):
-            parameters = {
-                "image_base64": item["base64_image"]
-            }
+            # parameters = {
+            #     "image_base64": item["base64_image"]
+            # }
             start_time = time.time()
 
             image_path = item['image_path']
