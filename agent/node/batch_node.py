@@ -21,12 +21,15 @@ class BatchI2VideoAndAudio(Node):
         script_data = db.get_script_by_script_id(script_id)
 
         scenes = script_data.get("scenes", [])
-        background_music_prompt = script_data.get("background_music_prompt")
+        lyrics = script_data.get("lyrics")
+        tags = script_data.get("tags")
 
         result = []
         for scene in scenes:
             image_id = scene["image_id"]
-            video_prompt = scene["image_to_video_prompt"]
+            video_prompt = scene["video_prompt"]
+            # 旁白
+            narration_subtitle = scene["narration_subtitle"]
 
             # 获取图片路径
             image_info = image_db.get_processed_image_by_id(image_id)
@@ -35,22 +38,23 @@ class BatchI2VideoAndAudio(Node):
             result.append({
                 "image_id": image_id,
                 "image_path": image_path,
-                "video_prompt": video_prompt
+                "video_prompt": video_prompt,
+                "narration_subtitle": narration_subtitle
             })
 
         db.close()
 
-        return result, background_music_prompt
+        return result, tags, lyrics
 
     def exec(self, input):
-        result, background_music_prompt = input
-        audio_workflow_id  = "audio_ace_step_api"
+        result, tags, lyrics = input
+        audio_workflow_id = "audio_ace_step_api"
 
         payload = {
             "tool": "generate_image_to_video",
             "params": json.dumps({
                 "tags": tags,
-                "image_path": lyrics,
+                "lyrics": lyrics,
                 "workflow_id": audio_workflow_id
             })
         }

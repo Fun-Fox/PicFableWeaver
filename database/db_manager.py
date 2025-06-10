@@ -132,7 +132,7 @@ class DatabaseManager:
                    key_plot_points TEXT,
                    emotional_tone TEXT,
                    tags TEXT,
-                   tags TEXT,
+                   lyrics TEXT,
 
                    scene_number TEXT,
                    image_id INTEGER,
@@ -155,7 +155,8 @@ class DatabaseManager:
         plot_summary = script_data.get("plot_summary")
         key_plot_points = script_data.get("key_plot_points")
         emotional_tone = script_data.get("emotional_tone")
-        background_music_prompt = script_data.get("background_music_prompt")
+        tags = script_data.get("tags")
+        lyrics = script_data.get("lyrics")
 
         for scene in scenes:
             scene_number = scene.get("scene_number")
@@ -169,13 +170,13 @@ class DatabaseManager:
             self.cursor.execute('''
                 INSERT INTO script_scene_info (
                     story_theme, plot_summary, key_plot_points, emotional_tone,
-                    background_music_prompt, scene_number, image_id,
+                    tags,lyrics, scene_number, image_id,
                     camera_movement, subject_action, transition_effect,
                     image_to_video_prompt, narration_subtitle, script_id
                 ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ''', (
                 story_theme, plot_summary, key_plot_points, emotional_tone,
-                background_music_prompt, scene_number, image_id,
+                tags,lyrics, scene_number, image_id,
                 camera_movement, subject_action, transition_effect,
                 image_to_video_prompt, narration_subtitle, script_id
             ))
@@ -194,16 +195,17 @@ class DatabaseManager:
                 "plot_summary": row[2],
                 "key_plot_points": row[3],
                 "emotional_tone": row[4],
-                "background_music_prompt": row[5],
-                "scene_number": row[6],
-                "image_id": row[7],
-                "camera_movement": row[8],
-                "subject_action": row[9],
-                "transition_effect": row[10],
-                "image_to_video_prompt": row[11],
-                "narration_subtitle": row[12]
+                "tags": row[5],
+                "lyrics": row[6],
+                "scene_number": row[7],
+                "image_id": row[8],
+                "camera_movement": row[9],
+                "subject_action": row[10],
+                "transition_effect": row[11],
+                "image_to_video_prompt": row[12],
+                "narration_subtitle": row[13]
             }
-            script_id = row[13]
+            script_id = row[14]
             if script_id not in scripts:
                 scripts[script_id] = []
             scripts[script_id].append(scene_data)
@@ -225,7 +227,8 @@ class DatabaseManager:
             "plot_summary": rows[0][2],
             "key_plot_points": rows[0][3],
             "emotional_tone": rows[0][4],
-            "background_music_prompt": rows[0][5]
+            "tags": rows[0][5],
+            "lyrics": rows[0][6]
         }
 
         for row in rows:
