@@ -243,13 +243,13 @@ class DatabaseManager:
         for row in rows:
             scenes.append({
                 "scene_id": row[0],
-                "scene_number": row[6],
-                "image_id": row[7],
-                "camera_movement": row[8],
-                "subject_action": row[9],
-                "transition_effect": row[10],
-                "image_to_video_prompt": row[11],
-                "narration_subtitle": row[12]
+                "scene_number": row[7],
+                "image_id": row[8],
+                "camera_movement": row[9],
+                "subject_action": row[10],
+                "transition_effect": row[11],
+                "image_to_video_prompt": row[12],
+                "narration_subtitle": row[13]
             })
 
         return {
