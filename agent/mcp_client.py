@@ -6,6 +6,7 @@ from loguru import logger
 import asyncio
 import websockets
 import json
+
 load_dotenv()
 
 caption_mcp_server_url = os.getenv("CAPTION_MCP_SERVER_URL")
@@ -46,7 +47,7 @@ def mcp_call_tool(tool_name=None, arguments=None):
             # tools = await client.list_tools()
             # if any(tool.name == tool_name for tool in tools):
             result = await client.call_tool(name=tool_name, arguments=arguments)
-            result_text = result[0].text if isinstance(result, list) and len(result) > 0 else ""
+            # result_text = result[0].text if isinstance(result, list) and len(result) > 0 else ""
             # print("调用结果文本内容：")
             # print(result_text)
             return result[0].text
@@ -54,9 +55,7 @@ def mcp_call_tool(tool_name=None, arguments=None):
     return asyncio.run(_call_tool())
 
 
-
 async def comfyui_mcp_server(payload):
-
     uri = os.getenv("COMFYUI_MCP_SERVER_URL")
     try:
         async with websockets.connect(uri) as ws:
