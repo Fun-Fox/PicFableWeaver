@@ -3,6 +3,7 @@ import gradio as gr
 import pandas as pd
 
 from agent.agent_start import caption_flow, weaver_flow
+from agent.flow.weaver_flow import i2v_flow
 from database.db_manager import DatabaseManager
 
 # 初始化数据库管理器
@@ -45,25 +46,20 @@ def get_script_details(script_id):
     base_info = f"""
     **剧本主题**: 
     
-    {script_data['story_theme']}
+        {script_data['story_theme']}
     
     **剧情概要**: 
     
-    {script_data['plot_summary']}
-    
-    **关键情节**: 
-    
-    {script_data['key_plot_points']}
+        {script_data['plot_summary']}
     
     **情感基调**: 
     
-    {script_data['emotional_tone']}
+        {script_data['emotional_tone']}
     
     **背景音乐提示**: 
     
-    {script_data['background_music_prompt']}
+        {script_data['background_music_prompt']}
     
-    ---
     """
 
     # 分镜信息（表格展示）
@@ -152,14 +148,28 @@ with gr.Blocks() as demo:
             script_ids = get_script_ids_and_themes()
             return list(script_ids.keys())
 
-
         script_dropdown = gr.Dropdown(choices=[''] + get_script_dropdown(), label="选择剧本 ID")
+
+        # 新增按钮
+        generate_video_button = gr.Button("生成视频", variant="primary")
+
+
         script_details_output = [
             gr.Markdown(label="剧本"),
             gr.Dataframe(label="分镜详情")
         ]
 
+        # 输出区域（可选）
+        video_result_output = gr.Textbox(label="视频生成结果")
+
         script_dropdown.change(get_script_details, inputs=script_dropdown, outputs=script_details_output)
+
+        # 按钮点击事件
+        generate_video_button.click(
+            fn=i2v_flow,
+            inputs=script_dropdown,
+            outputs=video_result_output
+        )
 
 # 启动 Gradio Web UI
 if __name__ == "__main__":

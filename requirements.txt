@@ -10,3 +10,4 @@ requests~=2.32.3
 websockets~=15.0.1
 mcp~=1.9.2
 pandas
+aiohttp

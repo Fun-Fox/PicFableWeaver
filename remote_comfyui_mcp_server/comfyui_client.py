@@ -3,6 +3,8 @@ import json
 import time
 from loguru import logger
 import os
+import aiohttp
+import asyncio
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -56,7 +58,7 @@ class ComfyUIClient:
         except json.JSONDecodeError:
             raise Exception(f"解析参数映射表文件 '{mapping_path}' 失败")
 
-    def generate_image(self, prompt, width=512, height=512, workflow_id="basic_api", model=None):
+    async def generate_image(self, prompt, width=512, height=512, workflow_id="basic_api", model=None):
         """生成图像
         
         Args:
@@ -107,24 +109,18 @@ class ComfyUIClient:
             prompt_id = response.json()["prompt_id"]  # 获取提示ID
             logger.info(f"已排队的工作流，prompt_id: {prompt_id}")  # 日志记录
 
-            max_attempts = 30  # 最大尝试次数
-            for _ in range(max_attempts):
-                history = requests.get(f"{self.base_url}/history/{prompt_id}").json()  # 获取历史记录
-                if history.get(prompt_id):
-                    outputs = history[prompt_id]["outputs"]  # 获取输出结果
-                    logger.info("工作流输出: %s", json.dumps(outputs, indent=2))  # 记录输出
-                    image_node = next((nid for nid, out in outputs.items() if "images" in out), None)  # 查找包含图像的节点
-                    if not image_node:
-                        raise Exception(f"未找到包含图像的输出节点: {outputs}")  # 错误处理
-                    image_filename = outputs[image_node]["images"][0]["filename"]  # 获取图像文件名
-                    # 构建图像URL
-                    image_url = f"{self.base_url}/view?filename={image_filename}&subfolder=&type=output"
-                    logger.info(f"生成的图像URL: {image_url}")  # 记录图像URL
-                    return image_url  # 返回图像URL
-                time.sleep(1)  # 等待1秒
-            # 超时处理
-            raise Exception(f"工作流 {prompt_id} 在 {max_attempts} 秒内未完成")
+            time.sleep(30)
 
+            # 异步等待并下载图像
+            try:
+                image_path = await self.poll_for_video_or_image_completion(prompt_id, max_attempts=30,
+                                                                           is_video=False)
+                logger.info(f"图片下载完成: {image_path}")
+            except Exception as e:
+                logger.error(f"图片处理失败: {e}")
+                raise
+
+            # 超时处理
         except FileNotFoundError:
             raise Exception(f"工作流文件 '{workflow_file}' 未找到")  # 文件未找到错误
         except KeyError as e:
@@ -132,7 +128,7 @@ class ComfyUIClient:
         except requests.RequestException as e:
             raise Exception(f"ComfyUI API错误: {e}")  # 请求异常处理
 
-    def generate_image_to_video(self, image_path, prompt, workflow_id="hy_image_to_video_api", ):
+    async def generate_image_to_video(self, image_path, prompt, workflow_id="hy_image_to_video_api", ):
         """从图像生成视频
         
         Args:
@@ -175,24 +171,13 @@ class ComfyUIClient:
 
             prompt_id = response.json()["prompt_id"]  # 获取提示ID
             logger.info(f"已排队的工作流，prompt_id: {prompt_id}")  # 日志记录
-
-            max_attempts = 60  # 增加最大尝试次数以适应视频生成
-            for _ in range(max_attempts):
-                history = requests.get(f"{self.base_url}/history/{prompt_id}").json()  # 获取历史记录
-                if history.get(prompt_id):
-                    outputs = history[prompt_id]["outputs"]  # 获取输出结果
-                    logger.info("工作流输出: %s", json.dumps(outputs, indent=2))  # 记录输出
-                    video_node = next((nid for nid, out in outputs.items() if "videos" in out), None)  # 查找包含视频的节点
-                    if not video_node:
-                        raise Exception(f"未找到包含视频的输出节点: {outputs}")  # 错误处理
-                    video_filename = outputs[video_node]["videos"][0]["filename"]  # 获取视频文件名
-                    # 构建视频URL
-                    video_url = f"{self.base_url}/view?filename={video_filename}&subfolder=&type=output"
-                    logger.info(f"生成的视频URL: {video_url}")  # 记录视频URL
-                    return video_url  # 返回视频URL
-                time.sleep(2)  # 等待2秒
-            # 超时处理
-            raise Exception(f"工作流 {prompt_id} 在 {max_attempts} 秒内未完成")
+            await asyncio.sleep(30)
+            try:
+                video_path = await self.poll_for_video_or_image_completion(prompt_id, max_attempts=60, is_video=True)
+                logger.info(f"视频下载完成: {video_path}")
+            except Exception as e:
+                logger.error(f"视频处理失败: {e}")
+                raise
 
         except FileNotFoundError:
             raise Exception(f"工作流文件 '{workflow_file}' 未找到")  # 文件未找到错误
@@ -224,3 +209,65 @@ class ComfyUIClient:
                 return response.json()['name']
         except Exception as e:
             raise Exception(f"上传图像失败: {e}")
+
+    async def download_video_or_image_async(self, video_url, save_path):
+        """异步下载视频文件"""
+        try:
+            logger.info(f"开始异步下载视频: {video_url}")
+            async with aiohttp.ClientSession() as session:
+                async with session.get(video_url) as resp:
+                    if resp.status == 200:
+                        with open(save_path, 'wb') as f:
+                            while True:
+                                chunk = await resp.content.read(64 * 1024)  # 每次读取64KB
+                                if not chunk:
+                                    break
+                                f.write(chunk)
+                        logger.info(f"视频已保存至: {save_path}")
+                        return save_path
+                    else:
+                        raise Exception(f"下载失败，状态码: {resp.status}")
+        except Exception as e:
+            logger.error(f"异步下载出错: {e}")
+            raise
+
+    async def poll_for_video_or_image_completion(self, prompt_id, max_attempts=60, interval=2, is_video=True):
+        """异步轮询 ComfyUI 历史接口以获取视频或图像 URL 并下载"""
+        content_type = "videos" if is_video else "images"
+        logger.info(f"开始轮询 {'视频' if is_video else '图像'} 生成结果...")
+
+        for attempt in range(max_attempts):
+            logger.info(f"轮询尝试 {attempt + 1}/{max_attempts}")
+            async with aiohttp.ClientSession() as session:
+                async with session.get(f"{self.base_url}/history/{prompt_id}") as resp:
+                    if resp.status != 200:
+                        logger.warning(f"HTTP 状态码错误：{resp.status}")
+                        await asyncio.sleep(interval)
+                        continue
+
+                    history = await resp.json()
+                    if history.get(prompt_id):
+                        outputs = history[prompt_id]["outputs"]
+                        logger.info("工作流输出: %s", json.dumps(outputs, indent=2))
+
+                        # 查找节点
+                        node_type = "videos" if is_video else "images"
+                        content_node = next((nid for nid, out in outputs.items() if node_type in out), None)
+
+                        if not content_node:
+                            raise Exception(f"未找到包含{'视频' if is_video else '图像'}的输出节点: {outputs}")
+
+                        filename = outputs[content_node][node_type][0]["filename"]
+                        file_url = f"{self.base_url}/view?filename={filename}&subfolder=&type=output"
+                        logger.info(f"生成的{'视频' if is_video else '图像'} URL: {file_url}")
+
+                        output_dir = os.getenv("OUTPUT", "downloaded_media")
+                        os.makedirs(output_dir, exist_ok=True)
+                        local_path = os.path.join(output_dir, filename)
+
+                        await self.download_video_or_image_async(file_url, local_path)
+                        return local_path
+
+            await asyncio.sleep(interval)
+
+        raise Exception(f"{'视频' if is_video else '图像'}任务 {prompt_id} 在 {max_attempts} 秒内未完成")

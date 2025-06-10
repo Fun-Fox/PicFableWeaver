@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from pocketflow import Node
 import yaml
 
@@ -17,6 +19,7 @@ class PicWeaverNode(Node):
         db.connect()
         image_db = ImageDBManager(db)
         image_info_list = image_db.get_all_processed_images(image_id_list)
+        db.close()
 
         return image_info_list
 
@@ -91,9 +94,10 @@ scenes:
             db.connect()
             db.create_script_table()  # 创建或确保剧本表存在
 
-            # 设置唯一脚本ID（如时间戳）
-            import time
-            script_id = f"script_{int(time.time())}"
+            # 使用 datetime 模块生成可读性强的时间字符串
+            now = datetime.now()
+            formatted_time = now.strftime("%Y%m%d_%H%M%S")  # 格式：年月日_时分秒
+            script_id = f"script_{formatted_time}"
             exec_res["script_id"] = script_id
 
             # 插入剧本与分镜数据
@@ -105,4 +109,6 @@ scenes:
         else:
             logger.warning("无法识别剧本格式，未执行保存。")
             return "failed"
-        return "done"
+
+
+

@@ -5,7 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="153aec6d-2f38-457f-b038-d60f7ce42a5f" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/agent/node/batch_node.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PicFableWeaver/webui/webui.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/flow/weaver_flow.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/flow/weaver_flow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/node/caption_node.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/node/caption_node.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent/node/weaver_node.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent/node/weaver_node.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/db_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/db_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/remote_comfyui_mcp_server/comfyui_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/comfyui_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/remote_comfyui_mcp_server/comfyui_mcp_start.py" beforeDir="false" afterPath="$PROJECT_DIR$/remote_comfyui_mcp_server/comfyui_mcp_start.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webui/webui.py" beforeDir="false" afterPath="$PROJECT_DIR$/webui/webui.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,32 +44,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.agent_start.executor": "Run",
-    "Python.app.executor": "Run",
-    "Python.caption.executor": "Run",
-    "Python.client.executor": "Run",
-    "Python.demo.executor": "Run",
-    "Python.image_caption.executor": "Run",
-    "Python.image_caption_flow.executor": "Run",
-    "Python.image_caption_tools (1).executor": "Run",
-    "Python.mcp_client.executor": "Run",
-    "Python.mcp_tools.executor": "Run",
-    "Python.server.executor": "Run",
-    "Python.start (1).executor": "Run",
-    "Python.test (1).executor": "Run",
-    "Python.test_mcp_server (1).executor": "Run",
-    "Python.test_mcp_server.executor": "Run",
-    "Python.use_mcp_tools (1).executor": "Run",
-    "Python.webui.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/PycharmProjects/PicFableWeaver",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.agent_start.executor&quot;: &quot;Run&quot;,
+    &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;Python.caption.executor&quot;: &quot;Run&quot;,
+    &quot;Python.client.executor&quot;: &quot;Run&quot;,
+    &quot;Python.demo.executor&quot;: &quot;Run&quot;,
+    &quot;Python.image_caption.executor&quot;: &quot;Run&quot;,
+    &quot;Python.image_caption_flow.executor&quot;: &quot;Run&quot;,
+    &quot;Python.image_caption_tools (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.mcp_client.executor&quot;: &quot;Run&quot;,
+    &quot;Python.mcp_tools.executor&quot;: &quot;Run&quot;,
+    &quot;Python.server.executor&quot;: &quot;Run&quot;,
+    &quot;Python.start (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.test (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.test_mcp_server (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.test_mcp_server.executor&quot;: &quot;Run&quot;,
+    &quot;Python.use_mcp_tools (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.webui.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/PycharmProjects/PicFableWeaver&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\PycharmProjects\PicFableWeaver" />
@@ -234,16 +247,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/remote_comfyui_mcp_server/comfyui_client.py</url>
-          <line>88</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

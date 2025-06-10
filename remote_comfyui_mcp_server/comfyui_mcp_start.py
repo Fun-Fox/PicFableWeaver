@@ -51,13 +51,13 @@ def generate_image(params: str) -> dict:
         model = param_dict.get("model", None)
 
         # 使用全局comfyui_client（因为mcp.context不可用）
-        image_url = comfyui_client.generate_image(
+        image_url = asyncio.run(comfyui_client.generate_image(
             prompt=prompt,
             width=width,
             height=height,
             workflow_id=workflow_id,
             model=model
-        )
+        ))
         logger.info(f"返回图像URL: {image_url}")
         return {"image_url": image_url}
     except Exception as e:
@@ -77,11 +77,11 @@ def generate_image_to_video(params: str) -> dict:
         workflow_id = param_dict.get("workflow_id", "hy_image_to_video_api")
 
         # 使用全局comfyui_client（因为mcp.context不可用）
-        video_url = comfyui_client.generate_image_to_video(
+        video_url = asyncio.run(comfyui_client.generate_image_to_video(
             image_path=image_path,
             prompt=prompt,
             workflow_id=workflow_id,
-        )
+        ))
         logger.info(f"返回视频URL: {video_url}")
         return {"image_url": video_url}
     except Exception as e:

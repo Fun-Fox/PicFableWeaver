@@ -55,6 +55,12 @@ class DatabaseManager:
         # 返回最后插入记录的ID
         return self.cursor.lastrowid
 
+    def is_image_path_exists(self, image_path: str) -> bool:
+        """检查指定的 image_path 是否存在于数据库中"""
+        self.cursor.execute('SELECT 1 FROM image_info WHERE image_path = ?', (image_path,))
+        result = self.cursor.fetchone()
+        return result is not None
+
     def get_all_image_info(self, id_list: list = None) -> list:
         """获取指定ID列表的图片信息，如果id_list为空则获取所有图片"""
 

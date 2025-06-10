@@ -39,6 +39,7 @@ class ImageCaptionNode(Node):
     """
     图片标注、反推描述
     """
+
     def prep(self, shared):
         """Prepare tool execution parameters"""
         return shared["image_dir"]
@@ -53,14 +54,25 @@ class ImageCaptionNode(Node):
 
         tool_name = "generate_image_caption"
         image_descriptions = []
+        db_manager = DatabaseManager()
+        db_manager.connect()
         for idx, item in enumerate(image_base64_list):
             parameters = {
                 "image_base64": item["base64_image"]
             }
             start_time = time.time()
+
+            image_path = item['image_path']
+
+            if db_manager.is_image_path_exists(image_path):
+                logger.info(f"`{image_path}` 存在于数据库中,不做识别更新。")
+                continue
+            else:
+                logger.info(f"`{image_path}` 不存在于数据库中。")
+
             result = mcp_call_tool(tool_name, parameters)
             _, _, image_desc = extract_sections(result)
-            image_path = item['image_path']
+
             file_name = os.path.basename(image_path)
             sleep(10)
             image_descriptions.append({
@@ -71,7 +83,7 @@ class ImageCaptionNode(Node):
             end_time = time.time()
             duration_time = (end_time - start_time) / 1000
             logger.info(f"第{idx}张图，图片文件名称：{file_name}，\n 图片描述：{image_desc}，\n 耗时：{duration_time}s")
-
+        db_manager.close()
         return image_descriptions
 
     def post(self, shared, prep_res, exec_res):
@@ -82,7 +94,6 @@ class ImageCaptionNode(Node):
         image_db = ImageDBManager(db)
         image_info_list = []
         for item in image_descriptions:
-
             image_id = image_db.process_and_store_image(item['image_path'], item['image_name'], item['image_desc'],
                                                         lens="",
                                                         composition="", visual_style="")
@@ -101,6 +112,7 @@ class ImageDescStructNode(Node):
     """
     图片描述格式化，更新数据库
     """
+
     def prep(self, shared):
         """Prepare tool execution parameters"""
         return shared["image_info_list"]
