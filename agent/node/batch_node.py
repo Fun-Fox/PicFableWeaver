@@ -28,13 +28,14 @@ class BatchI2VideoAndAudio(Node):
         result = []
         for scene in scenes:
             image_id = scene["image_id"]
-            video_prompt = scene["video_prompt"]
+            video_prompt = scene["image_to_video_prompt"]
             # 旁白
             narration_subtitle = scene["narration_subtitle"]
 
             # 获取图片路径
             image_info = image_db.get_processed_image_by_id(image_id)
             image_path = image_info[2] if image_info else None
+            print(image_path)
 
             result.append({
                 "image_id": image_id,

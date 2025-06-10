@@ -94,7 +94,7 @@ class ImageCaptionNode(Node):
         image_db = ImageDBManager(db)
         image_info_list = []
         for item in image_descriptions:
-            image_id = image_db.process_and_store_image(item['image_path'], item['image_name'], item['image_desc'],
+            image_id = image_db.process_and_store_image(item['image_name'], item['image_path'],item['image_desc'],
                                                         lens="",
                                                         composition="", visual_style="")
             image_info_list.append({
