@@ -19,7 +19,10 @@ class BatchI2Video(Node):
         image_db = ImageDBManager(db)
 
         script_data = db.get_script_by_script_id(script_id)
+
         scenes = script_data.get("scenes", [])
+        background_music_prompt = script_data.get("background_music_prompt")
+
         result = []
         for scene in scenes:
             image_id = scene["image_id"]
@@ -37,9 +40,10 @@ class BatchI2Video(Node):
 
         db.close()
 
-        return result
+        return result, background_music_prompt
 
-    def exec(self, result):
+    def exec(self, input):
+        result, background_music_prompt = input
         workflow_id = "hy_image_to_video_api"
         for ret in result:
             image_path = ret["image_path"]

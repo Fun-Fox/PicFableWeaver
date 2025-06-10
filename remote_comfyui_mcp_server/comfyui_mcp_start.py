@@ -44,10 +44,33 @@ def generate_image(params: str) -> dict:
     logger.info(f"收到请求参数: {params}")
     try:
         param_dict = json.loads(params)
+        tags = param_dict["tags"]
+        workflow_id = param_dict.get("workflow_id", "audio_ace_step_api")
+        lyrics = param_dict.get("lyrics", None)
+
+        # 使用全局comfyui_client（因为mcp.context不可用）
+        image_url = asyncio.run(comfyui_client.generate_audio(
+            tags=tags,
+            lyrics=lyrics,
+            workflow_id=workflow_id,
+        ))
+        logger.info(f"返回图像URL: {image_url}")
+        return {"image_url": image_url}
+    except Exception as e:
+        logger.error(f"错误: {e}")
+        return {"error": str(e)}
+
+
+@mcp.tool()
+def generate_image(params: str) -> dict:
+    """使用ComfyUI生成图像"""
+    logger.info(f"收到请求参数: {params}")
+    try:
+        param_dict = json.loads(params)
         prompt = param_dict["prompt"]
         width = param_dict.get("width", 512)
         height = param_dict.get("height", 512)
-        workflow_id = param_dict.get("workflow_id", "basic_api_test")
+        workflow_id = param_dict.get("workflow_id", "basic_api")
         model = param_dict.get("model", None)
 
         # 使用全局comfyui_client（因为mcp.context不可用）
