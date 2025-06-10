@@ -56,9 +56,13 @@ def get_script_details(script_id):
     
         {script_data['emotional_tone']}
     
-    **背景音乐提示**: 
+    **背景音乐风格标签**: 
     
-        {script_data['background_music_prompt']}
+        {script_data['tags']}
+        
+    **背景音乐歌词**: 
+    
+        {script_data['lyrics']}
     
     """
 
